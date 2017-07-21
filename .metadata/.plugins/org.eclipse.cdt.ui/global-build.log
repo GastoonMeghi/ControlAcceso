@@ -1,0 +1,30 @@
+18:38:22 **** Incremental Build of configuration Debug for project ControlAcceso ****
+make -r all 
+Building file: ../src/ControlAcceso.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__LPC17XX__ -D__REDLIB__ -I"C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\ControlAcceso\inc" -I"C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\ControlAcceso\inc\expansion3" -I"C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\ControlAcceso\inc\GPIO" -I"C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\ControlAcceso\inc\interrupciones" -I"C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\ControlAcceso\inc\kit_infotronic" -I"C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\ControlAcceso\inc\systick" -I"C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\ControlAcceso\inc\teclado" -I"C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\ControlAcceso\inc\timers" -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m3 -mthumb -specs=redlib.specs -MMD -MP -MF"src/ControlAcceso.d" -MT"src/ControlAcceso.o" -MT"src/ControlAcceso.d" -o "src/ControlAcceso.o" "../src/ControlAcceso.c"
+Finished building: ../src/ControlAcceso.c
+ 
+Building target: ControlAcceso.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="ControlAcceso.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T "ControlAcceso_Debug.ld" -o "ControlAcceso.axf"  ./src/timers/timers.o  ./src/systick/inic_systic.o  ./src/kit_infotronic/FW_InitBaseBoard.o  ./src/interrupciones/interrupciones.o  ./src/expansion3/7seg_Exp3.o ./src/expansion3/teclado_exp3.o  ./src/GPIO/FW_GPIO.o  ./src/ControlAcceso.o ./src/FW_InitOscilador.o ./src/aplicacion.o ./src/cr_startup_lpc175x_6x.o ./src/crp.o   
+Memory region         Used Size  Region Size  %age Used
+       MFlash512:        1324 B       512 KB      0.25%
+        RamLoc32:          16 B        32 KB      0.05%
+        RamAHB32:          0 GB        32 KB      0.00%
+Finished building target: ControlAcceso.axf
+ 
+make --no-print-directory post-build
+Performing post-build steps
+arm-none-eabi-size "ControlAcceso.axf"; # arm-none-eabi-objcopy -v -O binary "ControlAcceso.axf" "ControlAcceso.bin" ; # checksum -p LPC1769 -d "ControlAcceso.bin";
+   text	   data	    bss	    dec	    hex	filename
+   1324	      0	     16	   1340	    53c	ControlAcceso.axf
+ 
+18:43:46 **** Clean-only build of configuration Debug for project ControlAcceso ****
+make -r clean 
+rm -rf  ./src/timers/timers.o  ./src/systick/inic_systic.o  ./src/kit_infotronic/FW_InitBaseBoard.o  ./src/interrupciones/interrupciones.o  ./src/expansion3/7seg_Exp3.o ./src/expansion3/teclado_exp3.o  ./src/GPIO/FW_GPIO.o  ./src/ControlAcceso.o ./src/FW_InitOscilador.o ./src/aplicacion.o ./src/cr_startup_lpc175x_6x.o ./src/crp.o  ./src/timers/timers.d  ./src/systick/inic_systic.d  ./src/kit_infotronic/FW_InitBaseBoard.d  ./src/interrupciones/interrupciones.d  ./src/expansion3/7seg_Exp3.d ./src/expansion3/teclado_exp3.d  ./src/GPIO/FW_GPIO.d  ./src/ControlAcceso.d ./src/FW_InitOscilador.d ./src/aplicacion.d ./src/cr_startup_lpc175x_6x.d ./src/crp.d  ControlAcceso.axf
+ 
+18:43:50 **** Clean-only build of configuration Debug for project ControlAcceso ****
+make -r clean 
+rm -rf  ./src/timers/timers.o  ./src/systick/inic_systic.o  ./src/kit_infotronic/FW_InitBaseBoard.o  ./src/interrupciones/interrupciones.o  ./src/expansion3/7seg_Exp3.o ./src/expansion3/teclado_exp3.o  ./src/GPIO/FW_GPIO.o  ./src/ControlAcceso.o ./src/FW_InitOscilador.o ./src/aplicacion.o ./src/cr_startup_lpc175x_6x.o ./src/crp.o  ./src/timers/timers.d  ./src/systick/inic_systic.d  ./src/kit_infotronic/FW_InitBaseBoard.d  ./src/interrupciones/interrupciones.d  ./src/expansion3/7seg_Exp3.d ./src/expansion3/teclado_exp3.d  ./src/GPIO/FW_GPIO.d  ./src/ControlAcceso.d ./src/FW_InitOscilador.d ./src/aplicacion.d ./src/cr_startup_lpc175x_6x.d ./src/crp.d  ControlAcceso.axf
+ 
