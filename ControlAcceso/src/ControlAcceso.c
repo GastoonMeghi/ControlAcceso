@@ -18,17 +18,23 @@
 
 // TODO: insert other definitions and declarations here
 
-volatile uint8_t msgDisplay[6];
+
+__RW uint8_t msgDisplay[6];
+
+/**
+ *\var __RW uint8_t buff_key
+ *\brief buffer donde se almacena la tecla leida en el teclado matricial
+*/
+__RW uint8_t buff_key;
 
 int main(void) {
 
-    // TODO: insert code here
+	Inicializar ( );
 
-    // Force the counter to be placed into memory
-    volatile static int i = 0 ;
-    // Enter an infinite loop, just incrementing a counter
-    while(1) {
-        i++ ;
-    }
+    prueba ();
+
+    while (1)
+    aplicacion ();
+
     return 0 ;
 }

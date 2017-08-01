@@ -1,7 +1,0 @@
-18:43:50 **** Clean-only build of configuration Debug for project ControlAcceso ****
-make -r clean 
-rm -rf  ./src/timers/timers.o  ./src/systick/inic_systic.o  ./src/kit_infotronic/FW_InitBaseBoard.o  ./src/interrupciones/interrupciones.o  ./src/expansion3/7seg_Exp3.o ./src/expansion3/teclado_exp3.o  ./src/GPIO/FW_GPIO.o  ./src/ControlAcceso.o ./src/FW_InitOscilador.o ./src/aplicacion.o ./src/cr_startup_lpc175x_6x.o ./src/crp.o  ./src/timers/timers.d  ./src/systick/inic_systic.d  ./src/kit_infotronic/FW_InitBaseBoard.d  ./src/interrupciones/interrupciones.d  ./src/expansion3/7seg_Exp3.d ./src/expansion3/teclado_exp3.d  ./src/GPIO/FW_GPIO.d  ./src/ControlAcceso.d ./src/FW_InitOscilador.d ./src/aplicacion.d ./src/cr_startup_lpc175x_6x.d ./src/crp.d  ControlAcceso.axf
- 
-
-18:43:51 Build Finished (took 389ms)
-

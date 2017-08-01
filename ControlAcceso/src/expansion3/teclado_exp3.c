@@ -77,31 +77,33 @@ uint8_t Tecla (void)
 
 void InitGPIOs_Exp3 ( void )
 {
-	SetPINSEL (A_BCD,PINSEL_GPIO);
-	SetPINSEL (B_BCD,PINSEL_GPIO);
-	SetPINSEL (C_BCD,PINSEL_GPIO);
-	SetPINSEL (D_BCD,PINSEL_GPIO);
-	SetPINSEL (CLK,PINSEL_GPIO);
-	SetPINSEL (RST,PINSEL_GPIO);
-	SetPINSEL (FILA_0,PINSEL_GPIO);
-	SetPINSEL (FILA_1,PINSEL_GPIO);
-	SetPINSEL (FILA_2,PINSEL_GPIO);
-	SetPINSEL (FILA_3,PINSEL_GPIO);
-	SetPINSEL (COL_0,PINSEL_GPIO);
-	SetPINSEL (COL_1,PINSEL_GPIO);
-	SetPINSEL (seg_dp,PINSEL_GPIO);
+	set_pinsel (A_BCD,PINSEL_GPIO);
+	set_pinsel (B_BCD,PINSEL_GPIO);
+	set_pinsel (C_BCD,PINSEL_GPIO);
+	set_pinsel (D_BCD,PINSEL_GPIO);
+	set_pinsel (CLK,PINSEL_GPIO);
+	set_pinsel (RST,PINSEL_GPIO);
+	set_pinsel (FILA_0,PINSEL_GPIO);
+	set_pinsel (FILA_1,PINSEL_GPIO);
+	set_pinsel (FILA_2,PINSEL_GPIO);
+	set_pinsel (FILA_3,PINSEL_GPIO);
+	set_pinsel (COL_0,PINSEL_GPIO);
+	set_pinsel (COL_1,PINSEL_GPIO);
+	set_pinsel (seg_dp,PINSEL_GPIO);
 
-	SetDIR (A_BCD,SALIDA);
-	SetDIR (B_BCD,SALIDA);
-	SetDIR (C_BCD,SALIDA);
-	SetDIR (D_BCD,SALIDA);
-	SetDIR (CLK,SALIDA);
-	SetDIR (RST,SALIDA);
-	SetDIR (COL_0,SALIDA);
-	SetDIR (COL_1,SALIDA);
-	SetDIR (FILA_0,ENTRADA);
-	SetDIR (FILA_1,ENTRADA);
-	SetDIR (FILA_2,ENTRADA);
-	SetDIR (FILA_3,ENTRADA);
-	SetDIR (seg_dp,SALIDA);
+	set_dir (A_BCD,SALIDA);
+	set_dir (B_BCD,SALIDA);
+	set_dir (C_BCD,SALIDA);
+	set_dir (D_BCD,SALIDA);
+	set_dir (CLK,SALIDA);
+	set_dir (RST,SALIDA);
+	set_dir (COL_0,SALIDA);
+	set_dir (COL_1,SALIDA);
+	set_dir (FILA_0,ENTRADA);
+	set_dir (FILA_1,ENTRADA);
+	set_dir (FILA_2,ENTRADA);
+	set_dir (FILA_3,ENTRADA);
+	set_dir (seg_dp,SALIDA);
 }
+
+

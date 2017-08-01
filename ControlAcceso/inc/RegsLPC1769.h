@@ -349,4 +349,41 @@
 	#define		U1LSR		DIR_UART1[5]
 
 
+	//!< /////////////		RTC		///////////////////////////
+
+#define		RTC 			(( __RW uint32_t  * ) 0x40024000UL )
+#define		RTCILR			RTC[0]
+#define		RTCCCR			RTC[2]
+#define		RTCCIIR			RTC[3]
+#define		RTCAMR			RTC[4]
+#define		RTC_AUX			RTC[23]
+#define		RTC_AUXEN		RTC[22]
+#define		RTCCTIME0		RTC[5]
+#define		RTCCTIME1		RTC[6]
+#define		RTCCTIME2		RTC[7]
+#define		RTCSEC			RTC[8]
+#define		RTCMIN			RTC[9]
+#define		RTCHOUR			RTC[10]
+#define		RTCDOM			RTC[11]
+#define		RTCDOW			RTC[12]
+#define		RTCDOY			RTC[13]
+#define		RTCMONTH		RTC[14]
+#define		RTCYEAR			RTC[15]
+#define		RTCCALIBRATION	RTC[16]
+#define		RTCGPREG0		RTC[17]
+#define		RTCGPREG1		RTC[18]
+#define		RTCGPREG2		RTC[19]
+#define		RTCGPREG3		RTC[20]
+#define		RTCGPREG4		RTC[21]
+#define		RTCALSEC		RTC[24]
+#define		RTCALMIN		RTC[25]
+#define		RTCALHOUR		RTC[26]
+#define		RTCALDOM		RTC[27]
+#define		RTCALDOW		RTC[28]
+#define		RTCALDOY		RTC[29]
+#define		RTCALMON		RTC[30]
+#define		RTCALYEAR		RTC[31]
+
+
+
 #endif /* REGS_H_ */
