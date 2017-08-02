@@ -45,8 +45,6 @@ void teclado_sw (uint8_t cod_act)
 	__RW static uint8_t cod_ant = NO_KEY;
 	__RW static uint8_t contador = CANT_REBOTES;
 
-	if (cod_act==NO_KEY)
-	return;
 
 	if (cod_act==cod_ant)
 	{
@@ -58,7 +56,7 @@ void teclado_sw (uint8_t cod_act)
 		}
 		return;
 	}
-	else
+	else if (cod_act!=NO_KEY)
 	{
 		cod_ant=cod_act;
 		contador=CANT_REBOTES;

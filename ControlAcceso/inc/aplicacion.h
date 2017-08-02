@@ -33,11 +33,46 @@ void InicPLL     ( void );
  *\details para contemplar un numero distinto de digitos
 */
 #define MAX_DIGITOS 4
+#define CODIGO_PC_RECIBIDO datos_pc.codigo_personal!=0
+#define CODIGO_CORRECTO datos_pc.codigo_personal == colaborador.codigo_personal
+#define HAY_TARJETA colaborador.codigo_tarjeta!=0
+#define DESACTIVAR_TEMPORIZADOR_DE_INGRESO timer_codigo_personal = -1;
+#define TIEMPO_DE_INGRESO_CODIGO_PERSONAL 40 //medido en segundos
+#define ACTIVAR_TEMPORIZADOR_DE_INGRESO timer_codigo_personal = TIEMPO_DE_INGRESO_CODIGO_PERSONAL
+#define TEMPORIZADOR_DE_INGRESO_VENCIDO timer_codigo_personal ==-1
 
+#define NORMAL 0
+#define DETECCION 1
+#define SETEO 2
+#define INGRESO_CODIGO 3
+#define VALIDACION_CODIGO 4
+
+
+
+
+typedef struct
+{
+	__RW uint8_t codigo_personal;
+	__RW uint8_t horario_entrada;
+	__RW uint32_t codigo_tarjeta;
+
+} colaborador_t;
+
+typedef struct
+{
+	__RW uint8_t codigo_personal;
+	__RW uint32_t codigo_tarjeta;
+	__RW uint8_t dia;
+	__RW uint8_t mes;
+	__RW uint8_t anio;
+	__RW uint8_t hora;
+	__RW uint8_t min;
+	__RW uint8_t accion; //ENTRADA O SALIDA
+} datos_pc_t;
 
 
 /**
- *\fn void leer_codigo_personal (uint8_t *digito, uint8_t *buffer_codigo)
+ *\fn void leer_codigo_personal (uint8_t *buffer_codigo)
  *\brief almacena el codigo personal en buffer_codigo
  *
  *\details cuando el usuario teclea su codigo personal esta funcion lee la variable global key y la almacena en
@@ -49,7 +84,34 @@ void InicPLL     ( void );
  *\param[in] *digito dir de la variable que contiene el digito del codigo que esta siendo guardado en el buffer
  *\param[in] *buffer_codigo direccion de la variable donde se almacena el codigo
 */
-void leer_codigo_personal (uint8_t *digito, uint8_t *buffer_codigo);
+void leer_codigo_personal (uint8_t *buffer_codigo);
 
+
+
+/**
+ *\fn void inic_datos (void)
+ *\brief inicializa los datos utilizados en la aplicacion
+*/
+
+void inic_datos (void);
+
+
+/**
+ *\fn void estado_normal (void)
+ *\brief modo de trabajo normal del control de acceso
+ *\details realiza las tareas de deteccion de tarjeta, ingreso de codigo personal
+ *\details verificacion del mismo y envio de estos a la pc
+*/
+
+void estado_normal (void);
+
+/**
+ *\fn void estado_seteo (void);
+ *\brief modo de trabajo de seteo del control de acceso
+ *\details realiza las tareas de ingreso de tarjeta y codigo personal al sistema
+ *\details
+*/
+
+void estado_seteo (void);
 
 #endif /* APLICACION_H_ */

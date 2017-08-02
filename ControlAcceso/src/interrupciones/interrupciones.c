@@ -6,27 +6,28 @@
 //}
 extern __RW uint32_t msgDisplay[6];
 
+extern __RW uint16_t timer_codigo_personal;
 
-void TIMER0_IRQHandler (void)
-{
+extern __RW uint8_t flag_ingreso_codigo;
 
-	if (T0IR &(0x01<<4))  //captura0 del timer0
-	{
-		T0IR &= ~(0x01<<4);
-		display(T0CR0);
-		msgDisplay[3]|= (0x01<<7); //agrego dp
+extern __RW colaborador_t colaborador;
 
-	}
 
-}
 
 void SysTick_Handler (void)
 {
 
-
-
 	barrido_display ();
+	teclado_sw(teclado_hw());
+	if (flag_ingreso_codigo)
+	{
+		leer_codigo_personal(&(colaborador.codigo_personal));
 
+	}
 
+	if (timer_codigo_personal>0)
+	{
+		timer_codigo_personal--;
+	}
 
 }
