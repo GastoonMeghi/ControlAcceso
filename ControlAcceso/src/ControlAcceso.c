@@ -38,13 +38,7 @@ __RW uint8_t flag_ingreso_codigo;
 
 __RW uint32_t buffer_rfid;
 
-/**
- *\var __RW uint8_t estado=NORMAL;
- *\brief estado del programa, su cambio se realiza en la rutina de interrupcion
-*/
 
-
-__RW uint8_t estado=NORMAL;
 
 /**
  *\var __RW colaborador_t colaborador;
@@ -57,7 +51,7 @@ __RW colaborador_t colaborador;
  *\var __RW uint8_t buff_key
  *\brief buffer donde se almacena la tecla leida en el teclado matricial
 */
-__RW uint8_t buff_key;
+__RW uint8_t buff_key=NO_KEY;
 
 /**
  *\var __RW datos_pc_t datos_pc;
@@ -76,10 +70,19 @@ __RW datos_pc_t datos_pc;
 
 __RW uint16_t timer_codigo_personal = -1;
 
+////!!!!!!!CAMBIAR AL SALIR DEL MODO DE PRUEBA
+/*
+
+ * aplicacion 149 colaborador.codigo_personal=0;
+ * aplicacion 150 colaborador.codigo_tarjeta=0;
+ */
+
+
 
 int main(void) {
 
 	Inicializar ( );
+	colaborador.codigo_tarjeta=0;
 
     //prueba ();
 

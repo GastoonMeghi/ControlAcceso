@@ -19,6 +19,8 @@ void SysTick_Handler (void)
 
 	barrido_display ();
 	teclado_sw(teclado_hw());
+	display(colaborador.codigo_personal);
+	//display (123456);
 	if (flag_ingreso_codigo)
 	{
 		leer_codigo_personal(&(colaborador.codigo_personal));

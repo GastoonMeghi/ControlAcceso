@@ -1,8 +1,6 @@
 
 #include "Aplicacion.h"
 
-extern __RW uint8_t estado;
-
 extern __RW uint32_t buffer_rfid;
 
 extern __RW uint16_t timer_codigo_personal;
@@ -25,7 +23,7 @@ void Inicializar ( void )
 {
 	inic_GPIO ();
 	InicPLL ();
-	inic_timer0 ();
+	//inic_timer0 ();
 	InitGPIOs_Exp3 ();
 	inic_systick ();
 	Inic_RTC ();
@@ -35,7 +33,7 @@ void Inicializar ( void )
 
 void aplicacion (void)
 {
-
+	__RW uint8_t estado=NORMAL;
 
 	while (1)
 	{
@@ -55,21 +53,28 @@ void aplicacion (void)
 }
 
 
-void leer_codigo_personal (uint8_t *buffer_codigo)
+void leer_codigo_personal (uint32_t *buffer_codigo)
 {
-	__RW static uint8_t digito= MAX_DIGITOS -1;
+	__RW static uint8_t digito= MAX_DIGITOS;
 	static __RW uint8_t key_ant= NO_KEY;
+	static __RW uint8_t ok =1;
 	if (digito<=0)
 	{
-		digito =MAX_DIGITOS-1;
+		digito =MAX_DIGITOS;
 		codigo_personal_listo =1;
 		return;
 	}
 
-	key_ant=buff_key;
 
-	if (buff_key==NO_KEY||buff_key==key_ant) //impide leer mas de una vez la misma tecla
-		return;
+
+	if (buff_key==NO_KEY) //impide leer mas de una vez la misma tecla
+		{
+			ok=1;
+			return;
+		}
+
+	if(!ok) return;
+
 
 	if (digito==1)
 	*buffer_codigo += buff_key;
@@ -84,7 +89,8 @@ void leer_codigo_personal (uint8_t *buffer_codigo)
 	*buffer_codigo += buff_key*1000;
 
 	digito--;
-
+	ok =0;
+	key_ant=buff_key;
 }
 
 
@@ -112,6 +118,7 @@ void estado_normal (void)
 	{
 		if (codigo_personal_listo) //fue ingresado por el usuario
 		{
+			flag_ingreso_codigo=0;
 
 			if (CODIGO_PC_RECIBIDO)
 			{

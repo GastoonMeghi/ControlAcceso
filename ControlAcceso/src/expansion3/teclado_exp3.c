@@ -56,7 +56,7 @@ void teclado_sw (uint8_t cod_act)
 		}
 		return;
 	}
-	else if (cod_act!=NO_KEY)
+	else
 	{
 		cod_ant=cod_act;
 		contador=CANT_REBOTES;

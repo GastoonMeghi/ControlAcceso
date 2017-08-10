@@ -37,9 +37,9 @@ void InicPLL     ( void );
 #define CODIGO_CORRECTO datos_pc.codigo_personal == colaborador.codigo_personal
 #define HAY_TARJETA colaborador.codigo_tarjeta!=0
 #define DESACTIVAR_TEMPORIZADOR_DE_INGRESO timer_codigo_personal = -1;
-#define TIEMPO_DE_INGRESO_CODIGO_PERSONAL 40 //medido en segundos
+#define TIEMPO_DE_INGRESO_CODIGO_PERSONAL  27000
 #define ACTIVAR_TEMPORIZADOR_DE_INGRESO timer_codigo_personal = TIEMPO_DE_INGRESO_CODIGO_PERSONAL
-#define TEMPORIZADOR_DE_INGRESO_VENCIDO timer_codigo_personal ==-1
+#define TEMPORIZADOR_DE_INGRESO_VENCIDO timer_codigo_personal ==0
 
 #define NORMAL 0
 #define DETECCION 1
@@ -52,7 +52,7 @@ void InicPLL     ( void );
 
 typedef struct
 {
-	__RW uint8_t codigo_personal;
+	__RW uint32_t codigo_personal;
 	__RW uint8_t horario_entrada;
 	__RW uint32_t codigo_tarjeta;
 
@@ -60,7 +60,7 @@ typedef struct
 
 typedef struct
 {
-	__RW uint8_t codigo_personal;
+	__RW uint32_t codigo_personal;
 	__RW uint32_t codigo_tarjeta;
 	__RW uint8_t dia;
 	__RW uint8_t mes;
@@ -84,7 +84,7 @@ typedef struct
  *\param[in] *digito dir de la variable que contiene el digito del codigo que esta siendo guardado en el buffer
  *\param[in] *buffer_codigo direccion de la variable donde se almacena el codigo
 */
-void leer_codigo_personal (uint8_t *buffer_codigo);
+void leer_codigo_personal (uint32_t *buffer_codigo);
 
 
 
@@ -114,4 +114,6 @@ void estado_normal (void);
 
 void estado_seteo (void);
 
+
+void aplicacion (void);
 #endif /* APLICACION_H_ */
