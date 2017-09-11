@@ -58,8 +58,11 @@ __RW uint8_t buff_key=NO_KEY;
  *\brief  almacena la informacion enviada por la PC
 */
 
+
 __RW datos_pc_t datos_pc;
 
+
+__RW unsigned int DAC_buff;
 /**
  *\var __RW uint16_t timer_codigo_personal
  *\brief  setea un tiempo maximo para el ingreso del codigo
@@ -73,11 +76,23 @@ __RW uint16_t timer_codigo_personal = -1;
 ////!!!!!!!CAMBIAR AL SALIR DEL MODO DE PRUEBA
 /*
 
- * aplicacion 149 colaborador.codigo_personal=0;
- * aplicacion 150 colaborador.codigo_tarjeta=0;
+ * aplicacion linea 149 colaborador.codigo_personal=0;
+ * aplicacion linea 150 colaborador.codigo_tarjeta=0;
  */
 
 
+
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!BRANCH DAC!!!!!!!!!!!!!
+/**busco hacer funcionar el DAC y hacer una pequeña prueba de .wav
+ * para conectar el dac al amplificador se pone el jp13 en las patitas 1y2
+ * el amplificador tiene salida en la bornera CN21
+ * P2 controla el volumen
+ *
+ *TAREAS PENDIENTES:
+ *configurar interrupcion de timer para el DAC, la frecuencia de muestreo es 22500hz
+ **/
 
 int main(void) {
 

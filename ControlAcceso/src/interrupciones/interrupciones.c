@@ -1,9 +1,6 @@
 #include "aplicacion.h"
 
-//void SysTick_Handler(void)
-//{
-//	barrido_display();
-//}
+
 extern __RW uint32_t msgDisplay[6];
 
 extern __RW uint16_t timer_codigo_personal;
@@ -16,7 +13,6 @@ extern __RW colaborador_t colaborador;
 
 void SysTick_Handler (void)
 {
-
 	barrido_display ();
 	teclado_sw(teclado_hw());
 	display(colaborador.codigo_personal);

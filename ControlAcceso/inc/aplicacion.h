@@ -21,7 +21,9 @@
 	#include "systick.h"
 	#include "RTC.h"
 	#include "prueba.h"
-
+	#include "dac.h"
+	#include "wav.h"
+	#include "funciones_fat.h"
 void Inicializar ( void );
 void InicPLL     ( void );
 
