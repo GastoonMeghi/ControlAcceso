@@ -1,6 +1,12 @@
 #include "aplicacion.h"
 
 
+
+extern __RW uint16_t wav;
+extern __RW unsigned int DAC_buff;
+
+extern __RW uint8_t reproduciendo;
+
 extern __RW uint32_t msgDisplay[6];
 
 extern __RW uint16_t timer_codigo_personal;
@@ -26,6 +32,19 @@ void SysTick_Handler (void)
 	if (timer_codigo_personal>0)
 	{
 		timer_codigo_personal--;
+	}
+
+}
+
+
+void TIMER0_IRQHandler (void)
+{
+	T0IR |=0x01;
+
+	if (reproduciendo==1)
+	{
+		reproducir_wav (wav,reproduciendo);
+		escribir_dac (DAC_buff);
 	}
 
 }

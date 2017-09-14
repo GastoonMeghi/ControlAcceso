@@ -73,6 +73,13 @@ __RW unsigned int DAC_buff;
 
 __RW uint16_t timer_codigo_personal = -1;
 
+
+
+__RW uint16_t wav; //identifica el wav sobre el cual se va a trabajar
+
+__RW uint8_t reproduciendo; //indica si el wav se esta reproduciendo o ya termino
+
+
 ////!!!!!!!CAMBIAR AL SALIR DEL MODO DE PRUEBA
 /*
 
@@ -89,9 +96,6 @@ __RW uint16_t timer_codigo_personal = -1;
  * para conectar el dac al amplificador se pone el jp13 en las patitas 1y2
  * el amplificador tiene salida en la bornera CN21
  * P2 controla el volumen
- *
- *TAREAS PENDIENTES:
- *configurar interrupcion de timer para el DAC, la frecuencia de muestreo es 22500hz
  **/
 
 int main(void) {

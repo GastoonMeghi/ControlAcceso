@@ -32,7 +32,7 @@ void reproducir_wav (int wav, char *reproduciendo)
 	}
 	if (estado==REPRODUCCION)
 	{
-		f_read (&aux,4,&br,wav);
+		f_read (&aux,4,&br,(unsigned int)wav);
 		DAC_buff= aux/64; //el dividir por 64 es para adaptar el maximo del archivo wav codificado en 16bit a el maximo del DAC condificado en 10bits 64 = numero_maximo_wav/numero_maximo_DAC
 		size-=16; //cantidad de bits leidos
 

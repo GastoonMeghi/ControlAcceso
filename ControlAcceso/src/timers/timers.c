@@ -11,13 +11,10 @@ void inic_timer0 (void)
 
 	PCONP|= (0x01<<0);
 	PCLKSEL0 &= ~(0x03<<PCLK_TIMER0); //lo ajusto en CCLK/4
-	set_pinsel (KEY4_RC,0x03); //la selecciono como CAP0.0
-	//set_pinmode (KEY4_RC,PULL_UP); //resistencia de pull up interna
-	T0PR = 30000; //CAMBIAR ESTE VALOR
+	T0PR = 0; //cada pulso de clock son 0,01 useg
 	T0CTCR &= ~(0x03<<0); //TIMER
-
-	T0CCR |= (0x01<<1)| (0x01<<2); //cap0.0 FE y genera interrupcion
-
+	T0MCR |= (0x01)|(0x01<<1); //el match interrumpe y resetea
+	T0MR0 = 4444; // el mach se produce cada 44,44 useg 22500hz
 	T0TCR &= ~(0x01<<0);
 	T0TCR|= (0x01<<1);
 	T0TCR &= ~(0x01<<1);
