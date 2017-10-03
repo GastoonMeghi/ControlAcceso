@@ -91,13 +91,6 @@ __RW uint8_t reproduciendo; //indica si el wav se esta reproduciendo o ya termin
 
 
 
-//!!!!!!!!!!!!!!!!!!!!!!!!!BRANCH DAC!!!!!!!!!!!!!
-/**busco hacer funcionar el DAC y hacer una pequeña prueba de .wav
- * para conectar el dac al amplificador se pone el jp13 en las patitas 1y2
- * el amplificador tiene salida en la bornera CN21
- * P2 controla el volumen
- **/
-
 int main(void) {
 
 	Inicializar ( );

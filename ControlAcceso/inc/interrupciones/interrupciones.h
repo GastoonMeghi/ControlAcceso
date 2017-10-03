@@ -8,9 +8,9 @@
 #ifndef INTERRUPCIONES_H_
 #define INTERRUPCIONES_H_
 
-//void SysTick_Handler ( void );
+void SysTick_Handler ( void );
 
-void TIMER0_IRQHandler (void);
+
 
 
 #endif /* INTERRUPCIONES_H_ */

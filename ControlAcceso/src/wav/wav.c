@@ -5,42 +5,162 @@
  *      Author: Gaston
  */
 #include "aplicacion.h"
-extern __RW unsigned int DAC_buff;
 
-unsigned long get_wav_size (int wav)
+__RW uint32_t cola_de_reproduccion[CANT_WAVS+5]; //le sumo 5 para no desbordar la cola
+
+__RW long pos=-1; //posicion en cola de reproduccion, SE INICIALIZA EN "-1" por la manera en que se implemento reproducir wav, asi al introducir el primer elemento, toma la posicion 0
+
+extern char SD[];
+
+
+void inic_wav (void)
 {
-	unsigned int aux;
-	int br;
-	f_lseek (wav,40);
-	f_read (&aux,4,&br,wav);
-	return aux;
+	static FATFS *fs;
+
+	f_mount(fs, "", 0);
+	bzero (cola_de_reproduccion,CANT_WAVS+5); //al inicializarlo en cero indico que la cola esta vacia
 }
 
 
-void reproducir_wav (int wav, char *reproduciendo)
+void reproducir_wav ( uint32_t wav)
 {
-	static char estado=INIC;
-	static unsigned long size;
-	unsigned int aux,br;
+
+	if (pos>CANT_WAVS+5) return; //seguridad, si supero el tamaño del array no hago nada
+
+	cola_de_reproduccion[++pos]=wav; //pongo el wav en cola de reproduccion
+}
 
 
-	if (estado==INIC)
+void bzero (unsigned int *array,unsigned int tam)
+{
+	unsigned int i;
+
+	for (i=0;i<tam;i++)
 	{
-		size=get_wav_size (wav);
-		f_lseek (wav,44);
-		estado=REPRODUCCION;
+		array[i]=0;
 	}
-	if (estado==REPRODUCCION)
-	{
-		f_read (&aux,4,&br,(unsigned int)wav);
-		DAC_buff= aux/64; //el dividir por 64 es para adaptar el maximo del archivo wav codificado en 16bit a el maximo del DAC condificado en 10bits 64 = numero_maximo_wav/numero_maximo_DAC
-		size-=16; //cantidad de bits leidos
+}
 
-		if (size<16)
+int leer_buff_reproduccion (FIL *wav)
+{
+	static __RW uint16_t buff_reproduccion[TAM_BUFF_REPRODUCCION];
+	static __RW uint32_t i;
+	static __RW uint32_t br;
+	static __RW uint8_t estado=READ;
+	__RW uint32_t pepe=0;
+
+	if (estado==READ)
+	{
+		f_read (wav,buff_reproduccion,TAM_BUFF_REPRODUCCION*sizeof (uint16_t),&br);
+		i=0;
+		if (br==TAM_BUFF_REPRODUCCION*sizeof (uint16_t))
+			estado=NORMAL;
+		else if (br==0)
+			estado=TERMINE;
+		else if (br<TAM_BUFF_REPRODUCCION*sizeof (uint16_t))
+			estado=ULTIMO; //si leo menos bytes de los que deberia este es el fin del archivo
+	}
+
+	if (estado==NORMAL)
+	{
+		DACR&= ~(0x3FF<<6); //limpio los 10bits del DAC
+		DACR|= ((0x3FF)& (   (buff_reproduccion[i++])/64)   )<<6; //divido por 64 para convertir de 16 a 10 bits
+		if (i*sizeof(uint16_t)==br)
 		{
-			estado=INIC;
-			size=0;
-			*reproduciendo=0;
+			estado=READ;
 		}
 	}
+
+	if (estado==ULTIMO)
+	{
+		DACR&= ~(0x3FF<<6); //limpio los 10bits del DAC
+		DACR|= ((0x3FF)& (   (buff_reproduccion[i++])/64)   )<<6; //divido por 64 para convertir de 16 a 10 bits
+
+//		if(pepe)
+//			DACR|= (0x3FF)<<6;
+//		else
+//			DACR&= ~(0x3FF)<<6;
+
+
+		if (i*sizeof(uint16_t)==br)
+		{
+			estado=TERMINE;
+		}
+	}
+
+	if (estado==TERMINE)
+	{
+
+		estado=READ;
+		return 1;
+	}
+	return 0;
+
 }
+
+
+
+
+
+
+
+
+void WAV_TO_DAC (void)
+{
+	__RW uint32_t i;
+	static __RW uint8_t estado=INIC;
+	static FIL *aux=SD; //CAMBIA ESTO FORROOOO!!!
+
+
+	if (estado==INIC) //abro el wav correspondiente
+	{
+		switch (cola_de_reproduccion[0])
+		{
+		case WAV_BIENVENIDO:
+			f_open (aux,"bienvienido.wav",FA_READ);
+			break;
+		case WAV_HASTA_LUEGO:
+			f_open (aux,"hasta luego.wav",FA_READ);
+			break;
+		case WAV_CLAVE_INCORRECTA:
+			f_open (aux,"clave incorrecta.wav",FA_READ);
+			break;
+		case WAV_CLAVE_CORRECTA:
+			f_open (aux,"clave correcta.wav",FA_READ);
+			break;
+		case WAV_INGRESE_CODIGO:
+			f_open (aux,"ingrese codigo.wav",FA_READ);
+			break;
+		case NO_WAV:
+			return;
+		//agregar un "else" para codigos no contemplados
+		}
+		f_lseek (aux,44); //lo posiciono para la lectura del archivo
+		estado=REPRODUCCION;
+	}
+
+	if (estado==REPRODUCCION)
+	{
+
+		if (leer_buff_reproduccion (aux)) //si termino el archivo
+		{
+			f_close (aux);
+			estado = POP_COLA; //termine el archivo por lo tanto lo saco de la cola
+		}
+
+	}
+
+	if (estado==POP_COLA)
+	{
+		for (i=0;i<pos;i++)
+		cola_de_reproduccion[i]=cola_de_reproduccion[i+1]; //corro la cola hacia la "derecha" elminando el primer elemento
+
+
+		cola_de_reproduccion[pos]=NO_WAV; //limpio el ultimo elememto de la cola
+		pos--; //decremento la posicion del ultimo elemento
+		estado =INIC;
+	}
+}
+
+
+

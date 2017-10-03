@@ -23,7 +23,7 @@
 	#include "prueba.h"
 	#include "dac.h"
 	#include "wav.h"
-	#include "funciones_fat.h"
+	#include "fatfs.h"
 void Inicializar ( void );
 void InicPLL     ( void );
 

@@ -23,11 +23,17 @@ void Inicializar ( void )
 {
 	inic_GPIO ();
 	InicPLL ();
-	//inic_timer0 ();
 	InitGPIOs_Exp3 ();
 	inic_systick ();
 	Inic_RTC ();
 	inic_datos ();
+	// la inicializacion del wav, del dac y del timer debe estar en ese orden!
+	inic_dac ();
+	inic_wav();
+	inic_timer0 ();
+	/////******
+
+
 
 }
 
@@ -101,7 +107,8 @@ void estado_normal (void)
 
 	if (estado==DETECCION && HAY_TARJETA)
 	{
-		SENAL_INGRESO_CODIGO; //señal que indica al colaborador que debe ingresar el codigo
+		reproducir_wav(WAV_BIENVENIDO);
+	    reproducir_wav(WAV_INGRESE_CODIGO);
 		//PEDIR_CODIGO_PERSONAL_PC; //flag para pedir los datos de la pc
 
 		flag_ingreso_codigo=1;	//habilito a que se pueda ingresar el codigo
