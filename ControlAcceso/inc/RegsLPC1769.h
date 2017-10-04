@@ -340,8 +340,8 @@
 		#define		T1CR0			TIMER1[ 11 ]
 		#define		T1CR1			TIMER1[ 12 ]
 		//los siguientes dos registros NO estan contigüos. Por ende no se continúa con el offset
-		#define		T0EMR			( * ( ( __RW uint32_t  * ) 0x4000803CUL ) )
-		#define		T0CTCR			( * ( ( __RW uint32_t  * ) 0x40008070UL ) )/** CTCR - COUNT CONTROL REGISTER */
+		#define		T1EMR			( * ( ( __RW uint32_t  * ) 0x4000803CUL ) )
+		#define		T1CTCR			( * ( ( __RW uint32_t  * ) 0x40008070UL ) )/** CTCR - COUNT CONTROL REGISTER */
 
 		//!< /////////////		FIN TIMER1		///////////////////////////
 

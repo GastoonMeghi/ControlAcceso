@@ -15,6 +15,8 @@
 #define TIEMPO_VENCIDO 1
 #define CODIGO_CAPTURADO 2
 #define BUSY 3
+#define CAPTURAR 4
+#define PRIMER_PEDIDO 5
 
 #define MAX_DIGITOS 4
 
@@ -39,11 +41,14 @@ void capturar_codigo(void);
  *\details Los valores de retorno posibles son: BUSY (todavia no se termino de ingresar el codigo), TIEMPO_VENCIDO (el tiempo de ingreso se vencion),CODIGO_CAPTURADO (se logro capturar el codigo deseado)
 *\param[in] *codigo puntero a la direccion de memoria donde se desea guardar el codigo obtenido, NO VERIFICADO
 */
-int get_codigo_personal(uint32_t *codigo);
+uint32_t get_codigo_personal(uint32_t *codigo);
 
 
 
-uint32_t pow (uint8_t base, uint8_t exponente);
+
+void mostrar_codigo_personal(void);
+
+uint32_t my_pow (uint8_t base, uint8_t exponente);
 
 
 

@@ -105,6 +105,7 @@ void leer_codigo_personal (uint32_t *buffer_codigo)
 void estado_normal (void)
 {
 	__RW static uint8_t estado = DETECCION;
+	__RW uint32_t resultado_captura_codigo;
 
 	if (estado==DETECCION && HAY_TARJETA)
 	{
@@ -112,10 +113,7 @@ void estado_normal (void)
 	    reproducir_wav(WAV_INGRESE_CODIGO);
 		//PEDIR_CODIGO_PERSONAL_PC; //flag para pedir los datos de la pc
 
-		flag_ingreso_codigo=1;	//habilito a que se pueda ingresar el codigo
-		ACTIVAR_TEMPORIZADOR_DE_INGRESO; //activa un timer que fija el tiempo maximo para ingresar y aceptar el codigo
 		colaborador.codigo_personal =0;
-		codigo_personal_listo =0;
 
 		estado= VALIDACION_CODIGO;
 		//IGNORAR_LECTOR; //evita que se remplace el valor de tarjeta leido
@@ -125,31 +123,25 @@ void estado_normal (void)
 
 	if (estado==VALIDACION_CODIGO)
 	{
-		if (codigo_personal_listo) //fue ingresado por el usuario
+		resultado_captura_codigo=get_codigo_personal(colaborador.codigo_personal);
+		if (resultado_captura_codigo==CODIGO_CAPTURADO) //fue ingresado por el usuario
 		{
-			flag_ingreso_codigo=0;
-
 			if (CODIGO_PC_RECIBIDO)
 			{
 				if (CODIGO_CORRECTO)
 				{
-					//SEÑAL_BIENVENIDA_DESPEDIDA;
+					reproducir_wav (WAV_CLAVE_CORRECTA);
+					reproducir_wav(WAV_HASTA_LUEGO);
 					//ENVIAR_DATOS_PC;
 					//RESETEAR_DATOS; //resetea DETECCION_TARJETA,CODIGO_INGRESADO,CODIGO_CORRECTO
-					flag_ingreso_codigo=0; //el codigo ya fue ingresado
-					DESACTIVAR_TEMPORIZADOR_DE_INGRESO;
 					estado =DETECCION;
 					//ESCUCHAR_LECTOR //vuelve a habilitar el lector de rfid
 				}
 				else
 				{
-					//SEÑAL_CLAVE_INCORRECTA;
+					reproducir_wav (WAV_CLAVE_INCORRECTA);
 					colaborador.codigo_personal=0; //borro el codigo anterior
-					ACTIVAR_TEMPORIZADOR_DE_INGRESO;
-					flag_ingreso_codigo=1;
 				}
-
-				codigo_personal_listo =0;
 			}
 		}
 

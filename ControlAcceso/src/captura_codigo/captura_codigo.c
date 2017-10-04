@@ -28,10 +28,17 @@ __RW uint8_t resultado_captura=BUSY;
 */
 __RW uint8_t habilitar_captura;
 
+/**
+ *\var __RW uint8_t mostrar_codigo;
+ *\brief variable de uso interno de captura_codigo.c,controla si se debe mostrar el codigo
+ *
+*/
+__RW uint8_t mostrar_codigo;
+
 
 __RW uint8_t timer=1;
 
-int get_codigo_personal(uint32_t *codigo)
+uint32_t get_codigo_personal(uint32_t *codigo)
 {
 	static uint32_t estado=PRIMER_PEDIDO;
 
@@ -39,6 +46,7 @@ int get_codigo_personal(uint32_t *codigo)
 	{
 	case PRIMER_PEDIDO:
 		habilitar_captura=1;
+		mostrar_codigo=1;
 		INICIAR_TIMER;
 		estado=CAPTURAR;
 	case CAPTURAR:
@@ -47,11 +55,12 @@ int get_codigo_personal(uint32_t *codigo)
 		 *codigo=codigo_personal;
 		 resultado_captura=BUSY;
 		 estado=PRIMER_PEDIDO;
+		 mostrar_codigo=0;
 		 return CODIGO_CAPTURADO;
 		}
-		return resultado_caputura; //puede ser BUSY o TIEMPO_VENCIDO
 
 	}
+	return resultado_captura; //puede ser BUSY o TIEMPO_VENCIDO
 }
 
 
@@ -73,17 +82,18 @@ void capturar_codigo(void)
 	{	digito=0;
 		codigo=0;
 		INICIAR_TIMER;
-		estado=CAPTURANDO;
+		estado=CAPTURAR;
 
 	}
 
-	if (estado==CAPTURANDO)
+	if (estado==CAPTURAR)
 	{
 		if (!timer) //vencio el tiempo
 		{
 		estado=INICIO;  //reseteo valores
-		habilitar_caputura=0; //inhabilito la funcion, hasta ser llamada por get_codigo_personal
+		habilitar_captura=0; //inhabilito la funcion, hasta ser llamada por get_codigo_personal
 		resultado_captura= TIEMPO_VENCIDO; //informo condicion a get_codigo personal
+		codigo=0;
 		return;
 		}
 
@@ -92,13 +102,13 @@ void capturar_codigo(void)
 		resultado_captura= BUSY;
 		aux=Tecla();
 		if (aux<0||aux>9)return; //tecla invalida, no se contabiliza
-		codigo+= aux*pow (10,digito++); //lo calcula y despues incrementa el digito
+		codigo+= aux*my_pow (10,digito++); //lo calcula y despues incrementa el digito
 		return;
 		}
 		else  //se ingreso el maximo de digitos
 		{
-		 resultado_caputura=CODIGO_CAPTURADO;
-		 habilitar_caputra=0;
+		 resultado_captura=CODIGO_CAPTURADO;
+		 habilitar_captura=0;
 		 codigo_personal=codigo;
 		 estado=INICIO;
 		 return;
@@ -121,7 +131,14 @@ if (exponente==0) return 1;
 
 
 for (aux=1;aux<exponente;aux++)
-res=*base;
+res*=base;
 
 return res;
+}
+
+void mostrar_codigo_personal(void )
+{
+	if(!mostrar_codigo) return;
+
+	display (codigo_personal);
 }

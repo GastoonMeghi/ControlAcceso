@@ -47,7 +47,7 @@ int leer_buff_reproduccion (FIL *wav)
 	static __RW uint32_t i;
 	static __RW uint32_t br;
 	static __RW uint8_t estado=READ;
-	__RW uint32_t pepe=0;
+
 
 	if (estado==READ)
 	{
