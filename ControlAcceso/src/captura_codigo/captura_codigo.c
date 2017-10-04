@@ -102,7 +102,8 @@ void capturar_codigo(void)
 		resultado_captura= BUSY;
 		aux=Tecla();
 		if (aux<0||aux>9)return; //tecla invalida, no se contabiliza
-		codigo+= aux*my_pow (10,digito++); //lo calcula y despues incrementa el digito
+		codigo*=10;
+		codigo+=aux;
 		return;
 		}
 		else  //se ingreso el maximo de digitos
