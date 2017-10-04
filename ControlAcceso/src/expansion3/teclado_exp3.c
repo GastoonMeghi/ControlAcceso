@@ -6,7 +6,12 @@
  */
 #include "aplicacion.h"
 
-extern __RW uint8_t buff_key;
+/**
+ *\var __RW uint8_t buff_key
+ *\brief buffer donde se almacena la tecla leida en el teclado matricial
+*/
+__RW uint8_t buff_key=NO_KEY;
+
 
 uint8_t teclado_hw (void)
 {

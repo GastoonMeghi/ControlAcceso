@@ -11,4 +11,6 @@
 void inic_timer0 (void);
 
 
+void inic_timer1 (void);
+
 #endif /* TIMERS_H_ */

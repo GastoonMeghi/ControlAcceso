@@ -19,7 +19,6 @@
 // TODO: insert other definitions and declarations here
 
 
-__RW uint8_t msgDisplay[6];
 
 
 /**
@@ -47,11 +46,6 @@ __RW uint32_t buffer_rfid;
 __RW colaborador_t colaborador;
 
 
-/**
- *\var __RW uint8_t buff_key
- *\brief buffer donde se almacena la tecla leida en el teclado matricial
-*/
-__RW uint8_t buff_key=NO_KEY;
 
 /**
  *\var __RW datos_pc_t datos_pc;
@@ -62,7 +56,6 @@ __RW uint8_t buff_key=NO_KEY;
 __RW datos_pc_t datos_pc;
 
 
-__RW unsigned int DAC_buff;
 /**
  *\var __RW uint16_t timer_codigo_personal
  *\brief  setea un tiempo maximo para el ingreso del codigo
@@ -75,9 +68,6 @@ __RW uint16_t timer_codigo_personal = -1;
 
 
 
-__RW uint16_t wav; //identifica el wav sobre el cual se va a trabajar
-
-__RW uint8_t reproduciendo; //indica si el wav se esta reproduciendo o ya termino
 
 
 ////!!!!!!!CAMBIAR AL SALIR DEL MODO DE PRUEBA

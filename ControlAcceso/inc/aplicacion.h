@@ -24,6 +24,7 @@
 	#include "dac.h"
 	#include "wav.h"
 	#include "fatfs.h"
+	#include "captura_codigo.h"
 void Inicializar ( void );
 void InicPLL     ( void );
 
@@ -34,7 +35,7 @@ void InicPLL     ( void );
  *\details de cambiarse el numero maximo debe modificarse la funcion leer_codigo_personal
  *\details para contemplar un numero distinto de digitos
 */
-#define MAX_DIGITOS 4
+
 #define CODIGO_PC_RECIBIDO datos_pc.codigo_personal!=0
 #define CODIGO_CORRECTO datos_pc.codigo_personal == colaborador.codigo_personal
 #define HAY_TARJETA colaborador.codigo_tarjeta!=0

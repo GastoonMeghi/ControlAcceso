@@ -321,6 +321,29 @@
 		#define		CIS		2
 	//!< /////////////		FIN TIMER0		///////////////////////////
 
+	//!< /////////////		TIMER0		///////////////////////////
+		#define		TIMER1			( ( __RW uint32_t  * ) 0x40008000UL )
+
+		#define		T1IR			TIMER1[ 1 ]			/** IR - INTERRUPT REGISTER */
+
+		#define		T1TCR			TIMER1[ 1 ]			/** TCR - TIMER CONTROL REGISTER */
+		#define		T1TC			TIMER1[ 2 ]			/** TC - TIMER COUNTER REGISTER */
+		#define		T1PR			TIMER1[ 3 ]			/** PR - PRESCALE REGISTER */
+		#define		T1PC			TIMER1[ 4 ]			/** PC - PRESCALE COUNTER REGISTER */
+		#define		T1MCR			TIMER1[ 5 ]			/** MCR - MATCH CONTROL REGISTER */
+
+		#define		T1MR0			TIMER1[ 6 ]			/** MR - MATCH CONTROL REGISTER */
+		#define		T1MR1			TIMER1[ 7 ]
+		#define		T1MR2			TIMER1[ 8 ]
+		#define		T1MR3			TIMER1[ 9 ]
+		#define		T1CCR			TIMER1[ 10 ]
+		#define		T1CR0			TIMER1[ 11 ]
+		#define		T1CR1			TIMER1[ 12 ]
+		//los siguientes dos registros NO estan contigüos. Por ende no se continúa con el offset
+		#define		T0EMR			( * ( ( __RW uint32_t  * ) 0x4000803CUL ) )
+		#define		T0CTCR			( * ( ( __RW uint32_t  * ) 0x40008070UL ) )/** CTCR - COUNT CONTROL REGISTER */
+
+		//!< /////////////		FIN TIMER1		///////////////////////////
 
 
 	//!< /////////////		UARTs		///////////////////////////

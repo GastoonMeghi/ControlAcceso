@@ -8,7 +8,8 @@
 
 #include "Aplicacion.h"
 
-extern volatile uint8_t msgDisplay[];		//!< Buffer de display
+__RW uint8_t msgDisplay[6];
+
 
 	void barrido_display(void)
 	{
