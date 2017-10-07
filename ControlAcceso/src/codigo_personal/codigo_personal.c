@@ -6,6 +6,22 @@
  */
 #include "aplicacion.h"
 #include "definiciones_codigo_personal.h"
+/**
+ *\file codigo_personal.c
+ *\brief funciones encargadas de la captura y muestra del codigo por el display
+ *
+ *\details Las funciones dependen de:
+ *\details la cantidad maxima de digitos del codigo
+ *\details la implementacion de la funciones Tecla y display
+ *\details la configuracion del systick y el timer1
+ *\details de los codigos asignados a las teclas
+ *\bugs cambiar la definicion del ENTER
+ *
+ *\param[in] *array vector a incializar
+ *\param[in] *tam tamaño del vector
+*/
+
+
 
 /**
  *\var __RW uint32_t codigo=0;
