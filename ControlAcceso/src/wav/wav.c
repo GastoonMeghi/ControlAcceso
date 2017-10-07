@@ -5,6 +5,7 @@
  *      Author: Gaston
  */
 #include "aplicacion.h"
+#include "definiciones_wav.h"
 
 __RW uint32_t cola_de_reproduccion[CANT_WAVS+5]; //le sumo 5 para no desbordar la cola
 

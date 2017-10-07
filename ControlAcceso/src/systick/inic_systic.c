@@ -13,5 +13,5 @@ void inic_systick(void)
 	STCURR=0;
 	CLKSOURCE = 1;
 	ENABLE =1;
-	TICKINT = 1;
+	//TICKINT = 1;
 }

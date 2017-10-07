@@ -1,0 +1,479 @@
+Archive member included to satisfy reference by file (symbol)
+
+e:/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__weak__main.o)
+                              ./src/cr_startup_lpc175x_6x.o (__main)
+
+Discarded input sections
+
+ .group         0x00000000        0x8 ./src/timers/timers.o
+ .group         0x00000000        0x8 ./src/timers/timers.o
+ .group         0x00000000        0x8 ./src/timers/timers.o
+ .group         0x00000000        0x8 ./src/timers/timers.o
+ .text          0x00000000        0x0 ./src/timers/timers.o
+ .data          0x00000000        0x0 ./src/timers/timers.o
+ .bss           0x00000000        0x0 ./src/timers/timers.o
+ .text.inic_timer0
+                0x00000000       0xa8 ./src/timers/timers.o
+ .group         0x00000000        0x8 ./src/interrupciones/interrupciones.o
+ .group         0x00000000        0x8 ./src/interrupciones/interrupciones.o
+ .group         0x00000000        0x8 ./src/interrupciones/interrupciones.o
+ .group         0x00000000        0x8 ./src/interrupciones/interrupciones.o
+ .text          0x00000000        0x0 ./src/interrupciones/interrupciones.o
+ .data          0x00000000        0x0 ./src/interrupciones/interrupciones.o
+ .bss           0x00000000        0x0 ./src/interrupciones/interrupciones.o
+ .debug_macro   0x00000000      0x886 ./src/interrupciones/interrupciones.o
+ .debug_macro   0x00000000      0x711 ./src/interrupciones/interrupciones.o
+ .debug_macro   0x00000000       0xfa ./src/interrupciones/interrupciones.o
+ .debug_macro   0x00000000       0x64 ./src/interrupciones/interrupciones.o
+ .group         0x00000000        0x8 ./src/codigo_personal/codigo_personal.o
+ .group         0x00000000        0x8 ./src/codigo_personal/codigo_personal.o
+ .group         0x00000000        0x8 ./src/codigo_personal/codigo_personal.o
+ .group         0x00000000        0x8 ./src/codigo_personal/codigo_personal.o
+ .group         0x00000000        0x8 ./src/codigo_personal/codigo_personal.o
+ .text          0x00000000        0x0 ./src/codigo_personal/codigo_personal.o
+ .data          0x00000000        0x0 ./src/codigo_personal/codigo_personal.o
+ .bss           0x00000000        0x0 ./src/codigo_personal/codigo_personal.o
+ .debug_macro   0x00000000      0x886 ./src/codigo_personal/codigo_personal.o
+ .debug_macro   0x00000000      0x711 ./src/codigo_personal/codigo_personal.o
+ .debug_macro   0x00000000       0xfa ./src/codigo_personal/codigo_personal.o
+ .debug_macro   0x00000000       0x64 ./src/codigo_personal/codigo_personal.o
+ .group         0x00000000        0x8 ./src/GPIO/FW_GPIO.o
+ .group         0x00000000        0x8 ./src/GPIO/FW_GPIO.o
+ .group         0x00000000        0x8 ./src/GPIO/FW_GPIO.o
+ .group         0x00000000        0x8 ./src/GPIO/FW_GPIO.o
+ .text          0x00000000        0x0 ./src/GPIO/FW_GPIO.o
+ .data          0x00000000        0x0 ./src/GPIO/FW_GPIO.o
+ .bss           0x00000000        0x0 ./src/GPIO/FW_GPIO.o
+ .text.set_pinmode
+                0x00000000       0x7c ./src/GPIO/FW_GPIO.o
+ .text.set_pin  0x00000000       0x74 ./src/GPIO/FW_GPIO.o
+ .text.get_pin  0x00000000       0x4c ./src/GPIO/FW_GPIO.o
+ .text.toggle_pin
+                0x00000000       0x90 ./src/GPIO/FW_GPIO.o
+ .debug_macro   0x00000000      0x886 ./src/GPIO/FW_GPIO.o
+ .debug_macro   0x00000000      0x711 ./src/GPIO/FW_GPIO.o
+ .debug_macro   0x00000000       0xfa ./src/GPIO/FW_GPIO.o
+ .debug_macro   0x00000000       0x64 ./src/GPIO/FW_GPIO.o
+ .group         0x00000000        0x8 ./src/FW_InitOscilador.o
+ .group         0x00000000        0x8 ./src/FW_InitOscilador.o
+ .group         0x00000000        0x8 ./src/FW_InitOscilador.o
+ .text          0x00000000        0x0 ./src/FW_InitOscilador.o
+ .data          0x00000000        0x0 ./src/FW_InitOscilador.o
+ .bss           0x00000000        0x0 ./src/FW_InitOscilador.o
+ .text.InicPLL  0x00000000      0x140 ./src/FW_InitOscilador.o
+ .debug_info    0x00000000       0x5b ./src/FW_InitOscilador.o
+ .debug_abbrev  0x00000000       0x47 ./src/FW_InitOscilador.o
+ .debug_aranges
+                0x00000000       0x20 ./src/FW_InitOscilador.o
+ .debug_ranges  0x00000000       0x10 ./src/FW_InitOscilador.o
+ .debug_macro   0x00000000       0x23 ./src/FW_InitOscilador.o
+ .debug_macro   0x00000000      0x886 ./src/FW_InitOscilador.o
+ .debug_macro   0x00000000       0xfa ./src/FW_InitOscilador.o
+ .debug_macro   0x00000000      0x711 ./src/FW_InitOscilador.o
+ .debug_line    0x00000000       0xe7 ./src/FW_InitOscilador.o
+ .debug_str     0x00000000     0x3e7d ./src/FW_InitOscilador.o
+ .comment       0x00000000       0x6f ./src/FW_InitOscilador.o
+ .debug_frame   0x00000000       0x30 ./src/FW_InitOscilador.o
+ .ARM.attributes
+                0x00000000       0x33 ./src/FW_InitOscilador.o
+ .group         0x00000000        0x8 ./src/cr_startup_lpc175x_6x.o
+ .text          0x00000000        0x0 ./src/cr_startup_lpc175x_6x.o
+ .data          0x00000000        0x0 ./src/cr_startup_lpc175x_6x.o
+ .bss           0x00000000        0x0 ./src/cr_startup_lpc175x_6x.o
+ .debug_macro   0x00000000      0x886 ./src/cr_startup_lpc175x_6x.o
+ .group         0x00000000        0x8 ./src/crp.o
+ .group         0x00000000        0x8 ./src/crp.o
+ .text          0x00000000        0x0 ./src/crp.o
+ .data          0x00000000        0x0 ./src/crp.o
+ .bss           0x00000000        0x0 ./src/crp.o
+ .debug_macro   0x00000000      0x886 ./src/crp.o
+ .group         0x00000000        0x8 ./src/test.o
+ .group         0x00000000        0x8 ./src/test.o
+ .group         0x00000000        0x8 ./src/test.o
+ .group         0x00000000        0x8 ./src/test.o
+ .group         0x00000000        0x8 ./src/test.o
+ .text          0x00000000        0x0 ./src/test.o
+ .data          0x00000000        0x0 ./src/test.o
+ .bss           0x00000000        0x0 ./src/test.o
+ .debug_macro   0x00000000      0x886 ./src/test.o
+ .debug_macro   0x00000000      0x711 ./src/test.o
+ .debug_macro   0x00000000       0xfa ./src/test.o
+ .debug_macro   0x00000000       0x64 ./src/test.o
+ .text          0x00000000        0x0 e:/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__weak__main.o)
+ .data          0x00000000        0x0 e:/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__weak__main.o)
+ .bss           0x00000000        0x0 e:/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__weak__main.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+MFlash512        0x00000000         0x00080000         xr
+RamLoc32         0x10000000         0x00008000         xrw
+RamAHB32         0x2007c000         0x00008000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD ./src/timers/timers.o
+LOAD ./src/interrupciones/interrupciones.o
+LOAD ./src/codigo_personal/codigo_personal.o
+LOAD ./src/GPIO/FW_GPIO.o
+LOAD ./src/FW_InitOscilador.o
+LOAD ./src/cr_startup_lpc175x_6x.o
+LOAD ./src/crp.o
+LOAD ./src/test.o
+START GROUP
+LOAD e:/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a
+LOAD e:/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libcr_eabihelpers.a
+END GROUP
+                0x00000000                __base_MFlash512 = 0x0
+                0x00000000                __base_Flash = 0x0
+                0x00080000                __top_MFlash512 = 0x80000
+                0x00080000                __top_Flash = 0x80000
+                0x10000000                __base_RamLoc32 = 0x10000000
+                0x10000000                __base_RAM = 0x10000000
+                0x10008000                __top_RamLoc32 = 0x10008000
+                0x10008000                __top_RAM = 0x10008000
+                0x2007c000                __base_RamAHB32 = 0x2007c000
+                0x2007c000                __base_RAM2 = 0x2007c000
+                0x20084000                __top_RamAHB32 = 0x20084000
+                0x20084000                __top_RAM2 = 0x20084000
+
+.text           0x00000000      0x760
+ FILL mask 0xff
+                0x00000000                __vectors_start__ = ABSOLUTE (.)
+ *(.isr_vector)
+ .isr_vector    0x00000000       0xcc ./src/cr_startup_lpc175x_6x.o
+                0x00000000                g_pfnVectors
+                0x000000cc                . = ALIGN (0x4)
+                0x000000cc                __section_table_start = .
+                0x000000cc                __data_section_table = .
+                0x000000cc        0x4 LONG 0x760 LOADADDR (.data)
+                0x000000d0        0x4 LONG 0x10000000 ADDR (.data)
+                0x000000d4        0x4 LONG 0x4 SIZEOF (.data)
+                0x000000d8        0x4 LONG 0x760 LOADADDR (.data_RAM2)
+                0x000000dc        0x4 LONG 0x2007c000 ADDR (.data_RAM2)
+                0x000000e0        0x4 LONG 0x0 SIZEOF (.data_RAM2)
+                0x000000e4                __data_section_table_end = .
+                0x000000e4                __bss_section_table = .
+                0x000000e4        0x4 LONG 0x10000004 ADDR (.bss)
+                0x000000e8        0x4 LONG 0xc SIZEOF (.bss)
+                0x000000ec        0x4 LONG 0x2007c000 ADDR (.bss_RAM2)
+                0x000000f0        0x4 LONG 0x0 SIZEOF (.bss_RAM2)
+                0x000000f4                __bss_section_table_end = .
+                0x000000f4                __section_table_end = .
+ *(.after_vectors*)
+ .after_vectors
+                0x000000f4      0x140 ./src/cr_startup_lpc175x_6x.o
+                0x000000f4                data_init
+                0x00000138                bss_init
+                0x00000170                ResetISR
+                0x000001e4                NMI_Handler
+                0x000001ec                HardFault_Handler
+                0x000001f4                MemManage_Handler
+                0x000001fc                BusFault_Handler
+                0x00000204                UsageFault_Handler
+                0x0000020c                SVC_Handler
+                0x00000214                DebugMon_Handler
+                0x0000021c                PendSV_Handler
+                0x00000224                SysTick_Handler
+                0x0000022c                EINT3_IRQHandler
+                0x0000022c                CANActivity_IRQHandler
+                0x0000022c                TIMER3_IRQHandler
+                0x0000022c                UART0_IRQHandler
+                0x0000022c                UART1_IRQHandler
+                0x0000022c                EINT2_IRQHandler
+                0x0000022c                USBActivity_IRQHandler
+                0x0000022c                IntDefaultHandler
+                0x0000022c                I2C0_IRQHandler
+                0x0000022c                I2C1_IRQHandler
+                0x0000022c                PLL1_IRQHandler
+                0x0000022c                SSP0_IRQHandler
+                0x0000022c                I2S_IRQHandler
+                0x0000022c                I2C2_IRQHandler
+                0x0000022c                RTC_IRQHandler
+                0x0000022c                SPI_IRQHandler
+                0x0000022c                RIT_IRQHandler
+                0x0000022c                EINT1_IRQHandler
+                0x0000022c                UART2_IRQHandler
+                0x0000022c                ADC_IRQHandler
+                0x0000022c                SSP1_IRQHandler
+                0x0000022c                USB_IRQHandler
+                0x0000022c                BOD_IRQHandler
+                0x0000022c                CAN_IRQHandler
+                0x0000022c                WDT_IRQHandler
+                0x0000022c                PWM1_IRQHandler
+                0x0000022c                QEI_IRQHandler
+                0x0000022c                EINT0_IRQHandler
+                0x0000022c                PLL0_IRQHandler
+                0x0000022c                DMA_IRQHandler
+                0x0000022c                TIMER2_IRQHandler
+                0x0000022c                UART3_IRQHandler
+                0x0000022c                MCPWM_IRQHandler
+                0x0000022c                ENET_IRQHandler
+                0x000002fc                . = 0x2fc
+ *fill*         0x00000234       0xc8 ff
+                0x000002fc                PROVIDE (__CRP_WORD_START__, .)
+ *(.crp)
+ .crp           0x000002fc        0x4 ./src/crp.o
+                0x000002fc                CRP_WORD
+                0x00000300                PROVIDE (__CRP_WORD_END__, .)
+                0x00000001                ASSERT (! ((__CRP_WORD_START__ == __CRP_WORD_END__)), Linker CRP Enabled, but no CRP_WORD provided within application)
+ *(.text*)
+ .text.inic_timer1
+                0x00000300       0xa4 ./src/timers/timers.o
+                0x00000300                inic_timer1
+ .text.TIMER0_IRQHandler
+                0x000003a4       0x1c ./src/interrupciones/interrupciones.o
+                0x000003a4                TIMER0_IRQHandler
+ .text.TIMER1_IRQHandler
+                0x000003c0       0x28 ./src/interrupciones/interrupciones.o
+                0x000003c0                TIMER1_IRQHandler
+ .text.capturar_y_mostrar_codigo
+                0x000003e8      0x154 ./src/codigo_personal/codigo_personal.o
+                0x000003e8                capturar_y_mostrar_codigo
+ .text.get_codigo_personal
+                0x0000053c       0x78 ./src/codigo_personal/codigo_personal.o
+                0x0000053c                get_codigo_personal
+ .text.set_pinsel
+                0x000005b4       0x88 ./src/GPIO/FW_GPIO.o
+                0x000005b4                set_pinsel
+ .text.set_dir  0x0000063c       0x70 ./src/GPIO/FW_GPIO.o
+                0x0000063c                set_dir
+ .text.set_pinmodeOD
+                0x000006ac       0x60 ./src/GPIO/FW_GPIO.o
+                0x000006ac                set_pinmodeOD
+ .text.main     0x0000070c       0x50 ./src/test.o
+                0x0000070c                main
+ .text.__weak_main
+                0x0000075c        0x4 e:/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__weak__main.o)
+                0x0000075c                __weak_main
+                0x0000075c                __main
+ *(.rodata .rodata.* .constdata .constdata.*)
+                0x00000760                . = ALIGN (0x4)
+
+.glue_7         0x00000760        0x0
+ .glue_7        0x00000760        0x0 linker stubs
+
+.glue_7t        0x00000760        0x0
+ .glue_7t       0x00000760        0x0 linker stubs
+
+.vfp11_veneer   0x00000760        0x0
+ .vfp11_veneer  0x00000760        0x0 linker stubs
+
+.v4_bx          0x00000760        0x0
+ .v4_bx         0x00000760        0x0 linker stubs
+
+.iplt           0x00000760        0x0
+ .iplt          0x00000760        0x0 ./src/timers/timers.o
+
+.rel.dyn        0x00000760        0x0
+ .rel.iplt      0x00000760        0x0 ./src/timers/timers.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x00000760                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x00000760                __exidx_end = .
+                0x00000760                _etext = .
+
+.data_RAM2      0x2007c000        0x0 load address 0x00000760
+ FILL mask 0xff
+                [!provide]                PROVIDE (__start_data_RAM2, .)
+ *(.ramfunc.$RAM2)
+ *(.ramfunc.$RamAHB32)
+ *(.data.$RAM2*)
+ *(.data.$RamAHB32*)
+                0x2007c000                . = ALIGN (0x4)
+                [!provide]                PROVIDE (__end_data_RAM2, .)
+
+.uninit_RESERVED
+                0x10000000        0x0
+ *(.bss.$RESERVED*)
+                0x10000000                . = ALIGN (0x4)
+                0x10000000                _end_uninit_RESERVED = .
+
+.data           0x10000000        0x4 load address 0x00000760
+ FILL mask 0xff
+                0x10000000                _data = .
+ *(vtable)
+ *(.ramfunc*)
+ *(.data*)
+ .data.resultado
+                0x10000000        0x1 ./src/codigo_personal/codigo_personal.o
+                0x10000000                resultado
+ .data.inic.3752
+                0x10000001        0x1 ./src/codigo_personal/codigo_personal.o
+ .data.estado.3764
+                0x10000002        0x1 ./src/codigo_personal/codigo_personal.o
+                0x10000004                . = ALIGN (0x4)
+ *fill*         0x10000003        0x1 ff
+                0x10000004                _edata = .
+
+.igot.plt       0x10000004        0x0 load address 0x00000764
+ .igot.plt      0x10000004        0x0 ./src/timers/timers.o
+
+.bss_RAM2       0x2007c000        0x0
+                [!provide]                PROVIDE (__start_bss_RAM2, .)
+ *(.bss.$RAM2*)
+ *(.bss.$RamAHB32*)
+                0x2007c000                . = ALIGN ((. != 0x0)?0x4:0x1)
+                [!provide]                PROVIDE (__end_bss_RAM2, .)
+
+.bss            0x10000004        0xc
+                0x10000004                _bss = .
+ *(.bss*)
+ .bss.codigo    0x10000004        0x4 ./src/codigo_personal/codigo_personal.o
+                0x10000004                codigo
+ .bss.habilitar
+                0x10000008        0x1 ./src/codigo_personal/codigo_personal.o
+                0x10000008                habilitar
+ .bss.timer_ingreso_codigo
+                0x10000009        0x1 ./src/codigo_personal/codigo_personal.o
+                0x10000009                timer_ingreso_codigo
+ .bss.digito.3753
+                0x1000000a        0x1 ./src/codigo_personal/codigo_personal.o
+ *fill*         0x1000000b        0x1 
+ .bss.i.3748    0x1000000c        0x4 ./src/test.o
+ *(COMMON)
+                0x10000010                . = ALIGN (0x4)
+                0x10000010                _ebss = .
+                [!provide]                PROVIDE (end, .)
+
+.noinit_RAM2    0x2007c000        0x0
+ *(.noinit.$RAM2*)
+ *(.noinit.$RamAHB32*)
+                0x2007c000                . = ALIGN (0x4)
+
+.noinit         0x10000010        0x0
+                0x10000010                _noinit = .
+ *(.noinit*)
+                0x10000010                . = ALIGN (0x4)
+                0x10000010                _end_noinit = .
+                [!provide]                PROVIDE (_pvHeapStart, DEFINED (__user_heap_base)?__user_heap_base:.)
+                0x10008000                PROVIDE (_vStackTop, DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc32 - 0x0))
+                0xefff74c6                PROVIDE (__valid_user_code_checksum, (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
+OUTPUT(test.axf elf32-littlearm)
+
+.debug_info     0x00000000      0x78e
+ .debug_info    0x00000000       0x6c ./src/timers/timers.o
+ .debug_info    0x0000006c       0x87 ./src/interrupciones/interrupciones.o
+ .debug_info    0x000000f3      0x183 ./src/codigo_personal/codigo_personal.o
+ .debug_info    0x00000276      0x207 ./src/GPIO/FW_GPIO.o
+ .debug_info    0x0000047d      0x253 ./src/cr_startup_lpc175x_6x.o
+ .debug_info    0x000006d0       0x3f ./src/crp.o
+ .debug_info    0x0000070f       0x7f ./src/test.o
+
+.debug_abbrev   0x00000000      0x3c4
+ .debug_abbrev  0x00000000       0x47 ./src/timers/timers.o
+ .debug_abbrev  0x00000047       0x5f ./src/interrupciones/interrupciones.o
+ .debug_abbrev  0x000000a6       0xec ./src/codigo_personal/codigo_personal.o
+ .debug_abbrev  0x00000192       0x9b ./src/GPIO/FW_GPIO.o
+ .debug_abbrev  0x0000022d       0xf5 ./src/cr_startup_lpc175x_6x.o
+ .debug_abbrev  0x00000322       0x36 ./src/crp.o
+ .debug_abbrev  0x00000358       0x6c ./src/test.o
+
+.debug_aranges  0x00000000      0x180
+ .debug_aranges
+                0x00000000       0x28 ./src/timers/timers.o
+ .debug_aranges
+                0x00000028       0x28 ./src/interrupciones/interrupciones.o
+ .debug_aranges
+                0x00000050       0x28 ./src/codigo_personal/codigo_personal.o
+ .debug_aranges
+                0x00000078       0x50 ./src/GPIO/FW_GPIO.o
+ .debug_aranges
+                0x000000c8       0x80 ./src/cr_startup_lpc175x_6x.o
+ .debug_aranges
+                0x00000148       0x18 ./src/crp.o
+ .debug_aranges
+                0x00000160       0x20 ./src/test.o
+
+.debug_ranges   0x00000000      0x108
+ .debug_ranges  0x00000000       0x18 ./src/timers/timers.o
+ .debug_ranges  0x00000018       0x18 ./src/interrupciones/interrupciones.o
+ .debug_ranges  0x00000030       0x18 ./src/codigo_personal/codigo_personal.o
+ .debug_ranges  0x00000048       0x40 ./src/GPIO/FW_GPIO.o
+ .debug_ranges  0x00000088       0x70 ./src/cr_startup_lpc175x_6x.o
+ .debug_ranges  0x000000f8       0x10 ./src/test.o
+
+.debug_macro    0x00000000     0x13fa
+ .debug_macro   0x00000000       0x5c ./src/timers/timers.o
+ .debug_macro   0x0000005c      0x886 ./src/timers/timers.o
+ .debug_macro   0x000008e2      0x711 ./src/timers/timers.o
+ .debug_macro   0x00000ff3       0xfa ./src/timers/timers.o
+ .debug_macro   0x000010ed       0x64 ./src/timers/timers.o
+ .debug_macro   0x00001151       0x5c ./src/interrupciones/interrupciones.o
+ .debug_macro   0x000011ad       0x65 ./src/codigo_personal/codigo_personal.o
+ .debug_macro   0x00001212       0x3a ./src/codigo_personal/codigo_personal.o
+ .debug_macro   0x0000124c       0x5c ./src/GPIO/FW_GPIO.o
+ .debug_macro   0x000012a8       0x1d ./src/cr_startup_lpc175x_6x.o
+ .debug_macro   0x000012c5       0x1a ./src/crp.o
+ .debug_macro   0x000012df       0x34 ./src/crp.o
+ .debug_macro   0x00001313       0x65 ./src/test.o
+ .debug_macro   0x00001378       0x82 ./src/test.o
+
+.debug_line     0x00000000      0xd16
+ .debug_line    0x00000000      0x22e ./src/timers/timers.o
+ .debug_line    0x0000022e      0x229 ./src/interrupciones/interrupciones.o
+ .debug_line    0x00000457      0x27e ./src/codigo_personal/codigo_personal.o
+ .debug_line    0x000006d5      0x295 ./src/GPIO/FW_GPIO.o
+ .debug_line    0x0000096a       0xd4 ./src/cr_startup_lpc175x_6x.o
+ .debug_line    0x00000a3e       0x74 ./src/crp.o
+ .debug_line    0x00000ab2      0x264 ./src/test.o
+
+.debug_str      0x00000000     0x487e
+ .debug_str     0x00000000     0x3f16 ./src/timers/timers.o
+                               0x3f44 (size before relaxing)
+ .debug_str     0x00003f16       0x68 ./src/interrupciones/interrupciones.o
+                               0x3f7d (size before relaxing)
+ .debug_str     0x00003f7e      0x17e ./src/codigo_personal/codigo_personal.o
+                               0x40c7 (size before relaxing)
+ .debug_str     0x000040fc       0x72 ./src/GPIO/FW_GPIO.o
+                               0x3f96 (size before relaxing)
+ .debug_str     0x0000416e      0x1cb ./src/cr_startup_lpc175x_6x.o
+                               0x2693 (size before relaxing)
+ .debug_str     0x00004339       0xe9 ./src/crp.o
+                               0x25ab (size before relaxing)
+ .debug_str     0x00004422      0x45c ./src/test.o
+                               0x4371 (size before relaxing)
+
+.comment        0x00000000       0xdc
+ .comment       0x00000000       0x6e ./src/timers/timers.o
+                                 0x6f (size before relaxing)
+ .comment       0x0000006e       0x6f ./src/interrupciones/interrupciones.o
+ .comment       0x0000006e       0x6f ./src/codigo_personal/codigo_personal.o
+ .comment       0x0000006e       0x6f ./src/GPIO/FW_GPIO.o
+ .comment       0x0000006e       0x6f ./src/cr_startup_lpc175x_6x.o
+ .comment       0x0000006e       0x6f ./src/crp.o
+ .comment       0x0000006e       0x6f ./src/test.o
+ .comment       0x0000006e       0x6e e:/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__weak__main.o)
+                                 0x6f (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x33
+ .ARM.attributes
+                0x00000000       0x33 ./src/timers/timers.o
+ .ARM.attributes
+                0x00000033       0x33 ./src/interrupciones/interrupciones.o
+ .ARM.attributes
+                0x00000066       0x33 ./src/codigo_personal/codigo_personal.o
+ .ARM.attributes
+                0x00000099       0x33 ./src/GPIO/FW_GPIO.o
+ .ARM.attributes
+                0x000000cc       0x33 ./src/cr_startup_lpc175x_6x.o
+ .ARM.attributes
+                0x000000ff       0x33 ./src/crp.o
+ .ARM.attributes
+                0x00000132       0x33 ./src/test.o
+ .ARM.attributes
+                0x00000165       0x33 e:/lpcxpresso_8.2.2_650/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libcr_c.a(__weak__main.o)
+
+.debug_frame    0x00000000      0x3c0
+ .debug_frame   0x00000000       0x50 ./src/timers/timers.o
+ .debug_frame   0x00000050       0x50 ./src/interrupciones/interrupciones.o
+ .debug_frame   0x000000a0       0x5c ./src/codigo_personal/codigo_personal.o
+ .debug_frame   0x000000fc      0x128 ./src/GPIO/FW_GPIO.o
+ .debug_frame   0x00000224      0x170 ./src/cr_startup_lpc175x_6x.o
+ .debug_frame   0x00000394       0x2c ./src/test.o

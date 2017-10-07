@@ -10,18 +10,6 @@
 
 
 #include "aplicacion.h"
-
-
-//estados de las funciones
-#define INIC 0
-#define REPRODUCCION 1
-#define NORMAL 2
-#define POP 3
-#define READ 4
-#define ULTIMO 5
-#define TERMINE 6
-#define POP_COLA 7
-
 //codigos de wavs
 #define WAV_BIENVENIDO 1
 #define WAV_HASTA_LUEGO 2
@@ -30,8 +18,7 @@
 #define WAV_INGRESE_CODIGO 5
 #define NO_WAV 0
 
-#define TAM_BUFF_REPRODUCCION 100
-#define CANT_WAVS 5
+
 
 
 typedef unsigned char FIL;

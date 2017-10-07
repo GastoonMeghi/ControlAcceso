@@ -59,46 +59,6 @@ void aplicacion (void)
 }
 
 
-void leer_codigo_personal (uint32_t *buffer_codigo)
-{
-	__RW static uint8_t digito= MAX_DIGITOS;
-	static __RW uint8_t key_ant= NO_KEY;
-	static __RW uint8_t ok =1;
-
-	if (digito<=0) //si ya lei todos los digitos
-	{
-		digito =MAX_DIGITOS;
-		codigo_personal_listo =1;
-		return;
-	}
-
-
-
-	if (buff_key==NO_KEY) //impide leer mas de una vez la misma tecla
-		{
-			ok=1;
-			return;
-		}
-
-	if(!ok) return;
-
-
-	if (digito==1)
-	*buffer_codigo += buff_key;
-
-	else if (digito==2)
-	*buffer_codigo += buff_key*10;
-
-	else if (digito==3)
-	*buffer_codigo += buff_key*100;
-
-	else if (digito==4)
-	*buffer_codigo += buff_key*1000;
-
-	digito--;
-	ok =0;
-	key_ant=buff_key;
-}
 
 
 void estado_normal (void)
