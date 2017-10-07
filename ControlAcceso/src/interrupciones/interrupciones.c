@@ -1,6 +1,5 @@
 #include "aplicacion.h"
 
-extern __RW uint8_t timer_ingreso_codigo;
 
 void TIMER0_IRQHandler (void)
 {
@@ -11,6 +10,6 @@ void TIMER0_IRQHandler (void)
 
 void TIMER1_IRQHandler (void)
 {
-	timer_ingreso_codigo=0;
+	timer_codigo_vencido ();
 	T1IR|=(0x01);
 }

@@ -7,11 +7,27 @@
 #include "aplicacion.h"
 #include "definiciones_codigo_personal.h"
 
+/**
+ *\var __RW uint32_t codigo=0;
+ *\brief  uso interno de codigo_personal.c, es el codigo leido en el teclado
+*/
 __RW uint32_t codigo=0;
-
+/**
+ *\var __RW uint8_t resultado
+ *\brief  uso interno, resultados de las funciones de codigo_personal.c
+ *\details valores posibles: BUSY(ingresando codigo), READY (codigo ingresado),TIEMPO_VENCIDO (vencio el tiempo de ingreso de codigo)
+*/
 __RW uint8_t resultado=BUSY;
 
+/**
+ *\var __RW uint8_t habilitar;
+ *\brief  uso interno, variable que habilita el funcionamiento de void capturar_y_mostrar_codigo (void)
+*/
 __RW uint8_t habilitar=0;
+/**
+ *\var __RW uint8_t timer_ingreso_codigo;
+ *\brief  uso interno, flag que indica el estado del timer, 0: vencido, 1:corriendo
+*/
 
 __RW uint8_t timer_ingreso_codigo;
 
@@ -99,4 +115,10 @@ uint8_t get_codigo_personal (uint32_t *codigo_personal)
 		}
 	}
 	return resultado;
+}
+
+
+void timer_codigo_vencido (void)
+{
+	timer_ingreso_codigo=0;
 }
