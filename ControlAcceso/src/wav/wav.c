@@ -6,7 +6,6 @@
  */
 #include "aplicacion.h"
 #include "definiciones_wav.h"
-
 __RW uint32_t cola_de_reproduccion[CANT_WAVS+5]; //le sumo 5 para no desbordar la cola
 
 __RW long pos=-1; //posicion en cola de reproduccion, SE INICIALIZA EN "-1" por la manera en que se implemento reproducir wav, asi al introducir el primer elemento, toma la posicion 0
@@ -45,10 +44,10 @@ void bzero (unsigned int *array,unsigned int tam)
 int leer_buff_reproduccion (FIL *wav)
 {
 	static __RW uint16_t buff_reproduccion[TAM_BUFF_REPRODUCCION];
-	static __RW uint32_t i;
-	static __RW uint32_t br;
+	static __RW uint32_t i; //variable que cuenta la cantidad de muestras de 16bits leidas
+	static __RW uint32_t br; //cantidad de BYTES!!! leidos
 	static __RW uint8_t estado=READ;
-	__RW uint32_t pepe=0;
+
 
 	if (estado==READ)
 	{
@@ -66,7 +65,7 @@ int leer_buff_reproduccion (FIL *wav)
 	{
 		DACR&= ~(0x3FF<<6); //limpio los 10bits del DAC
 		DACR|= ((0x3FF)& (   (buff_reproduccion[i++])/64)   )<<6; //divido por 64 para convertir de 16 a 10 bits
-		if (i*sizeof(uint16_t)==br)
+		if (i*sizeof(uint16_t)==br) //si ya lei todos los bytes del buff_reproduccion
 		{
 			estado=READ;
 		}
@@ -77,10 +76,6 @@ int leer_buff_reproduccion (FIL *wav)
 		DACR&= ~(0x3FF<<6); //limpio los 10bits del DAC
 		DACR|= ((0x3FF)& (   (buff_reproduccion[i++])/64)   )<<6; //divido por 64 para convertir de 16 a 10 bits
 
-//		if(pepe)
-//			DACR|= (0x3FF)<<6;
-//		else
-//			DACR&= ~(0x3FF)<<6;
 
 
 		if (i*sizeof(uint16_t)==br)
@@ -91,7 +86,7 @@ int leer_buff_reproduccion (FIL *wav)
 
 	if (estado==TERMINE)
 	{
-
+		DACR&= ~(0x3FF<<6); //limpio los 10bits del DAC
 		estado=READ;
 		return 1;
 	}
@@ -161,6 +156,12 @@ void WAV_TO_DAC (void)
 		pos--; //decremento la posicion del ultimo elemento
 		estado =INIC;
 	}
+
+	if (estado==200) //aparecia 200 sin razon aparente, pruebo si esto lo arregla
+	{
+		estado=POP_COLA;
+	}
+
 }
 
 

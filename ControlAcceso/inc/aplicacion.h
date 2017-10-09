@@ -14,6 +14,7 @@
 	#include "expansion3.h"
 	#include "GPIO.h"
 	#include "KitInfo2_BaseBoard.h"
+	#include "codigo_personal.h"
 	#include "Oscilador.h"
 	#include "RegsLPC1769.h"
 	#include "interrupciones.h"

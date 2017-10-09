@@ -19,6 +19,6 @@ uint8_t get_codigo_personal (uint32_t *codigo_personal);
 
 void capturar_y_mostrar_codigo (void);
 
-
+uint32_t my_pow (uint8_t base, uint8_t exp);
 
 #endif /* CODIGO_PERSONAL_CODIGO_PERSONAL_H_ */

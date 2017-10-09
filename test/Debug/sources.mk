@@ -17,6 +17,8 @@ SUBDIRS := \
 src \
 src/GPIO \
 src/codigo_personal \
+src/expansion3 \
 src/interrupciones \
+src/systick \
 src/timers \
 

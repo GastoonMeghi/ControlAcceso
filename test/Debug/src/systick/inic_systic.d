@@ -1,6 +1,5 @@
-src/codigo_personal/codigo_personal.o \
- src/codigo_personal/codigo_personal.d: \
- ../src/codigo_personal/codigo_personal.c \
+src/systick/inic_systic.o src/systick/inic_systic.d: \
+ ../src/systick/inic_systic.c \
  C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc/aplicacion.h \
  C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\timers/timers.h \
  C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\codigo_personal/codigo_personal.h \
@@ -11,8 +10,7 @@ src/codigo_personal/codigo_personal.o \
  C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\GPIO/GPIO.h \
  C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\expansion3/expansion3.h \
  C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\kit_infotronic/KitInfo2_BaseBoard.h \
- C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\systick/systick.h \
- C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\codigo_personal/definiciones_codigo_personal.h
+ C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\systick/systick.h
 
 C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc/aplicacion.h:
 
@@ -35,5 +33,3 @@ C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\expansion3/expansion3
 C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\kit_infotronic/KitInfo2_BaseBoard.h:
 
 C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\systick/systick.h:
-
-C:\Users\Gaston\proyectos\proyInfo2\ControlAcceso\test\inc\codigo_personal/definiciones_codigo_personal.h:

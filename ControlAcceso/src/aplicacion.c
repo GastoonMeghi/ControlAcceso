@@ -32,9 +32,7 @@ void Inicializar ( void )
 	inic_wav();
 	inic_timer0 ();
 	/////******
-
-
-
+	inic_timer1();
 }
 
 void aplicacion (void)

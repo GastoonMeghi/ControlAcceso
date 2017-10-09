@@ -14,3 +14,13 @@ void TIMER1_IRQHandler (void)
 	T1IR|=(0x01);
 }
 
+void SysTick_Handler (void)
+{
+
+
+
+	barrido_display ();
+	teclado_sw(teclado_hw());
+
+
+}

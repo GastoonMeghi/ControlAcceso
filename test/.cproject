@@ -36,6 +36,9 @@
 								<option id="com.crt.advproject.gcc.hdrlib.432496411" name="Library headers" superClass="com.crt.advproject.gcc.hdrlib" value="Redlib" valueType="enumerated"/>
 								<option id="com.crt.advproject.gcc.specs.2075310008" name="Specs" superClass="com.crt.advproject.gcc.specs" value="com.crt.advproject.gcc.specs.codered" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.1419352040" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test/inc/systick}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test/inc/kit_infotronic}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test/inc/expansion3}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test/inc/codigo_personal}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test/inc/GPIO}&quot;"/>

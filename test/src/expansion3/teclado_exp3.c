@@ -66,7 +66,7 @@ void teclado_sw (uint8_t cod_act)
 
 uint8_t Tecla (void)
 {
-
+	uint8_t aux=NO_KEY;
 	static uint8_t key_ant=NO_KEY;
 	if (buff_key==NO_KEY)
 	{

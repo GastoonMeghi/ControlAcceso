@@ -20,14 +20,15 @@
 
 int main(void) {
 
-    // TODO: insert code here
 
-    // Force the counter to be placed into memory
     volatile static int i = 0 ;
-    // Enter an infinite loop, just incrementing a counter
+    InicPLL ();
     set_pinsel (3,26,0);
     set_dir (3,26,1);
     set_pinmodeOD (3,26,0);
+    inic_systick ();
+    InitGPIOs_Exp3 ();
+
     inic_timer1();
     T1TCR |= (0x01<<0);
     get_codigo_personal (&i);

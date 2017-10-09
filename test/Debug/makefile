@@ -9,7 +9,9 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include src/timers/subdir.mk
+-include src/systick/subdir.mk
 -include src/interrupciones/subdir.mk
+-include src/expansion3/subdir.mk
 -include src/codigo_personal/subdir.mk
 -include src/GPIO/subdir.mk
 -include src/subdir.mk

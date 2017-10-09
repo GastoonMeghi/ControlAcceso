@@ -67,8 +67,7 @@ void capturar_y_mostrar_codigo (void)
 		resultado=BUSY;
 		return;
 	}
-	codigo*=10;
-	codigo+=tecla;
+	codigo+=tecla*my_pow(10,digito);
 	display(codigo);
 	digito++;
 	resultado=BUSY;
@@ -98,4 +97,16 @@ uint8_t get_codigo_personal (uint32_t *codigo_personal)
 		}
 	}
 	return resultado;
+}
+
+
+uint32_t my_pow (uint8_t base, uint8_t exp)
+{
+	uint8_t aux;
+	if (exp==0) return 1;
+	if (exp==1) return base;
+	for (aux=1;aux<exp;aux++)
+		base*=base;
+	return base;
+
 }

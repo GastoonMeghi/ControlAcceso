@@ -37,7 +37,6 @@
 								<option id="com.crt.advproject.gcc.specs.867380781" name="Specs" superClass="com.crt.advproject.gcc.specs" value="com.crt.advproject.gcc.specs.codered" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.1625145780" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ControlAcceso/inc/codigo_personal}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ControlAcceso/inc/codigo_personal}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ControlAcceso/inc/DAC}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ControlAcceso/inc/fatfs}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ControlAcceso/inc/wav}&quot;"/>
@@ -49,7 +48,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ControlAcceso/inc/interrupciones}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ControlAcceso/inc/kit_infotronic}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ControlAcceso/inc/systick}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ControlAcceso/inc/teclado}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ControlAcceso/inc/timers}&quot;"/>
 								</option>
 								<inputType id="com.crt.advproject.compiler.input.919125455" superClass="com.crt.advproject.compiler.input"/>

@@ -14,6 +14,8 @@
 #include "Oscilador.h"
 #include "interrupciones.h"
 #include "GPIO.h"
-
+#include "expansion3.h"
+#include "KitInfo2_BaseBoard.h"
+#include "systick.h"
 
 #endif /* APLICACION_H_ */
