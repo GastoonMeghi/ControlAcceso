@@ -1,10 +1,10 @@
 //*****************************************************************************
-// LPC175x_6x Microcontroller Startup code for use with LPCXpresso IDE
+// LPC177x_8x Microcontroller Startup code for use with LPCXpresso IDE
 //
-// Version : 150706
+// Version : 160817
 //*****************************************************************************
 //
-// Copyright(C) NXP Semiconductors, 2014-2015
+// Copyright(C) NXP Semiconductors, 2014-2016
 // All rights reserved.
 //
 // Software that is described herein is for illustrative purposes only
@@ -28,7 +28,6 @@
 // copyright, permission, and disclaimer notice must appear in all copies of
 // this code.
 //*****************************************************************************
-
 #if defined (__cplusplus)
 #ifdef __REDLIB__
 #error Redlib does not support C++
@@ -124,6 +123,17 @@ void QEI_IRQHandler(void) ALIAS(IntDefaultHandler);
 void PLL1_IRQHandler(void) ALIAS(IntDefaultHandler);
 void USBActivity_IRQHandler(void) ALIAS(IntDefaultHandler);
 void CANActivity_IRQHandler(void) ALIAS(IntDefaultHandler);
+#if defined (__USE_LPCOPEN)
+void SDIO_IRQHandler(void) ALIAS(IntDefaultHandler);
+#else
+void MCI_IRQHandler(void) ALIAS(IntDefaultHandler);
+#endif
+void UART4_IRQHandler(void) ALIAS(IntDefaultHandler);
+void SSP2_IRQHandler(void) ALIAS(IntDefaultHandler);
+void LCD_IRQHandler(void) ALIAS(IntDefaultHandler);
+void GPIO_IRQHandler(void) ALIAS(IntDefaultHandler);
+void PWM0_IRQHandler(void) ALIAS(IntDefaultHandler);
+void EEPROM_IRQHandler(void) ALIAS(IntDefaultHandler);
 
 //*****************************************************************************
 //
@@ -165,62 +175,69 @@ __attribute__ ((used,section(".isr_vector")))
 void (* const g_pfnVectors[])(void) = {
     // Core Level - CM3
     &_vStackTop, // The initial stack pointer
-    ResetISR,                               // The reset handler
-    NMI_Handler,                            // The NMI handler
-    HardFault_Handler,                      // The hard fault handler
-    MemManage_Handler,                      // The MPU fault handler
-    BusFault_Handler,                       // The bus fault handler
-    UsageFault_Handler,                     // The usage fault handler
-    __valid_user_code_checksum,             // LPC MCU Checksum
-    0,                                      // Reserved
-    0,                                      // Reserved
-    0,                                      // Reserved
-    SVC_Handler,                            // SVCall handler
-    DebugMon_Handler,                       // Debug monitor handler
-    0,                                      // Reserved
-    PendSV_Handler,                         // The PendSV handler
-    SysTick_Handler,                        // The SysTick handler
+    ResetISR,                           // The reset handler
+    NMI_Handler,                        // The NMI handler
+    HardFault_Handler,                  // The hard fault handler
+    MemManage_Handler,                  // The MPU fault handler
+    BusFault_Handler,                   // The bus fault handler
+    UsageFault_Handler,                 // The usage fault handler
+    __valid_user_code_checksum,         // LPC MCU Checksum
+    0,                                  // Reserved
+    0,                                  // Reserved
+    0,                                  // Reserved
+    SVC_Handler,                        // SVCall handler
+    DebugMon_Handler,                   // Debug monitor handler
+    0,                                  // Reserved
+    PendSV_Handler,                     // The PendSV handler
+    SysTick_Handler,                    // The SysTick handler
 
     // Chip Level - LPC17
-    WDT_IRQHandler,                         // 16, 0x40 - WDT
-    TIMER0_IRQHandler,                      // 17, 0x44 - TIMER0
-    TIMER1_IRQHandler,                      // 18, 0x48 - TIMER1
-    TIMER2_IRQHandler,                      // 19, 0x4c - TIMER2
-    TIMER3_IRQHandler,                      // 20, 0x50 - TIMER3
-    UART0_IRQHandler,                       // 21, 0x54 - UART0
-    UART1_IRQHandler,                       // 22, 0x58 - UART1
-    UART2_IRQHandler,                       // 23, 0x5c - UART2
-    UART3_IRQHandler,                       // 24, 0x60 - UART3
-    PWM1_IRQHandler,                        // 25, 0x64 - PWM1
-    I2C0_IRQHandler,                        // 26, 0x68 - I2C0
-    I2C1_IRQHandler,                        // 27, 0x6c - I2C1
-    I2C2_IRQHandler,                        // 28, 0x70 - I2C2
-    SPI_IRQHandler,                         // 29, 0x74 - SPI
-    SSP0_IRQHandler,                        // 30, 0x78 - SSP0
-    SSP1_IRQHandler,                        // 31, 0x7c - SSP1
-    PLL0_IRQHandler,                        // 32, 0x80 - PLL0 (Main PLL)
-    RTC_IRQHandler,                         // 33, 0x84 - RTC
-    EINT0_IRQHandler,                       // 34, 0x88 - EINT0
-    EINT1_IRQHandler,                       // 35, 0x8c - EINT1
-    EINT2_IRQHandler,                       // 36, 0x90 - EINT2
-    EINT3_IRQHandler,                       // 37, 0x94 - EINT3
-    ADC_IRQHandler,                         // 38, 0x98 - ADC
-    BOD_IRQHandler,                         // 39, 0x9c - BOD
-    USB_IRQHandler,                         // 40, 0xA0 - USB
-    CAN_IRQHandler,                         // 41, 0xa4 - CAN
-    DMA_IRQHandler,                         // 42, 0xa8 - GP DMA
-    I2S_IRQHandler,                         // 43, 0xac - I2S
+    WDT_IRQHandler,                     // 16, 0x40 - WDT
+    TIMER0_IRQHandler,                  // 17, 0x44 - TIMER0
+    TIMER1_IRQHandler,                  // 18, 0x48 - TIMER1
+    TIMER2_IRQHandler,                  // 19, 0x4c - TIMER2
+    TIMER3_IRQHandler,                  // 20, 0x50 - TIMER3
+    UART0_IRQHandler,                   // 21, 0x54 - UART0
+    UART1_IRQHandler,                   // 22, 0x58 - UART1
+    UART2_IRQHandler,                   // 23, 0x5c - UART2
+    UART3_IRQHandler,                   // 24, 0x60 - UART3
+    PWM1_IRQHandler,                    // 25, 0x64 - PWM1
+    I2C0_IRQHandler,                    // 26, 0x68 - I2C0
+    I2C1_IRQHandler,                    // 27, 0x6c - I2C1
+    I2C2_IRQHandler,                    // 28, 0x70 - I2C2
+    IntDefaultHandler,                  // 29, Not used
+    SSP0_IRQHandler,                    // 30, 0x78 - SSP0
+    SSP1_IRQHandler,                    // 31, 0x7c - SSP1
+    PLL0_IRQHandler,                    // 32, 0x80 - PLL0 (Main PLL)
+    RTC_IRQHandler,                     // 33, 0x84 - RTC
+    EINT0_IRQHandler,                   // 34, 0x88 - EINT0
+    EINT1_IRQHandler,                   // 35, 0x8c - EINT1
+    EINT2_IRQHandler,                   // 36, 0x90 - EINT2
+    EINT3_IRQHandler,                   // 37, 0x94 - EINT3
+    ADC_IRQHandler,                     // 38, 0x98 - ADC
+    BOD_IRQHandler,                     // 39, 0x9c - BOD
+    USB_IRQHandler,                     // 40, 0xA0 - USB
+    CAN_IRQHandler,                     // 41, 0xa4 - CAN
+    DMA_IRQHandler,                     // 42, 0xa8 - GP DMA
+    I2S_IRQHandler,                     // 43, 0xac - I2S
 #if defined (__USE_LPCOPEN)
-    ETH_IRQHandler,                         // 44, 0xb0 - Ethernet
+    ETH_IRQHandler,                     // 44, 0xb0 - Ethernet
+    SDIO_IRQHandler,                    // 45, 0xb4 - SD/MMC card I/F
 #else
-    ENET_IRQHandler,                        // 44, 0xb0 - Ethernet
+    ENET_IRQHandler,                    // 44, 0xb0 - Ethernet
+    MCI_IRQHandler,                     // 45, 0xb4 - SD/MMC card I/F
 #endif
-    RIT_IRQHandler,                         // 45, 0xb4 - RITINT
-    MCPWM_IRQHandler,                       // 46, 0xb8 - Motor Control PWM
-    QEI_IRQHandler,                         // 47, 0xbc - Quadrature Encoder
-    PLL1_IRQHandler,                        // 48, 0xc0 - PLL1 (USB PLL)
-    USBActivity_IRQHandler,                 // 49, 0xc4 - USB Activity interrupt to wakeup
-    CANActivity_IRQHandler,                 // 50, 0xc8 - CAN Activity interrupt to wakeup
+    MCPWM_IRQHandler,                   // 46, 0xb8 - Motor Control PWM
+    QEI_IRQHandler,                     // 47, 0xbc - Quadrature Encoder
+    PLL1_IRQHandler,                    // 48, 0xc0 - PLL1 (USB PLL)
+    USBActivity_IRQHandler,             // 49, 0xc4 - USB Activity interrupt to wakeup
+    CANActivity_IRQHandler,             // 50, 0xc8 - CAN Activity interrupt to wakeup
+    UART4_IRQHandler,                   // 51, 0xcc - UART4
+    SSP2_IRQHandler,                    // 52, 0xd0 - SSP2
+    LCD_IRQHandler,                     // 53, 0xd4 - LCD
+    GPIO_IRQHandler,                    // 54, 0xd8 - GPIO
+    PWM0_IRQHandler,                    // 55, 0xdc - PWM0
+    EEPROM_IRQHandler,                  // 56, 0xe0 - EEPROM
 };
 
 //*****************************************************************************
@@ -376,3 +393,4 @@ __attribute__ ((section(".after_vectors")))
 void IntDefaultHandler(void)
 { while(1) {}
 }
+

@@ -5,7 +5,6 @@
  *      Author: Gaston
  */
 #include "aplicacion.h"
-
 void inic_timer0 (void)
 {
 
@@ -23,7 +22,6 @@ void inic_timer0 (void)
 
 	ISER0 |= (0x01<<1);
 }
-
 
 void inic_timer1 (void)
 {

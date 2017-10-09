@@ -4,6 +4,17 @@
 void TIMER0_IRQHandler (void)
 {
 	WAV_TO_DAC ();
+//	static uint8_t aux=0;
+//	if (aux==0)
+//	{
+//		DACR&= ~(0x3FF<<6);
+//		aux=1;
+//	}
+//	else
+//	{
+//		DACR|= (0x3FF<<6);
+//		aux=0;
+//	}
 	T0IR|=(0x01);
 }
 

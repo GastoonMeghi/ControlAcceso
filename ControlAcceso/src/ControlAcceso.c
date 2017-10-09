@@ -79,15 +79,23 @@ __RW uint16_t timer_codigo_personal = -1;
 
 
 
-
+extern char SD[];
 
 int main(void) {
 
+	unsigned char aux;
 	uint32_t i;
 	Inicializar ( );
 	colaborador.codigo_tarjeta=0;
 
     //prueba ();
+
+		aux = SD[36];
+	    aux = SD[37];
+	    aux = SD[38];
+	    aux = SD[39];
+	    aux = SD[40];
+	    aux = SD[41];
 
 	reproducir_wav (WAV_BIENVENIDO);
 

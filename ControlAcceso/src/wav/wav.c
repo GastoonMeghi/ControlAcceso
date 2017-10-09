@@ -113,19 +113,19 @@ void WAV_TO_DAC (void)
 		switch (cola_de_reproduccion[0])
 		{
 		case WAV_BIENVENIDO:
-			f_open (aux,"bienvienido.wav",FA_READ);
+			fopen (aux,"bienvienido.wav",FA_READ);
 			break;
 		case WAV_HASTA_LUEGO:
-			f_open (aux,"hasta luego.wav",FA_READ);
+			fopen (aux,"hasta luego.wav",FA_READ);
 			break;
 		case WAV_CLAVE_INCORRECTA:
-			f_open (aux,"clave incorrecta.wav",FA_READ);
+			fopen (aux,"clave incorrecta.wav",FA_READ);
 			break;
 		case WAV_CLAVE_CORRECTA:
-			f_open (aux,"clave correcta.wav",FA_READ);
+			fopen (aux,"clave correcta.wav",FA_READ);
 			break;
 		case WAV_INGRESE_CODIGO:
-			f_open (aux,"ingrese codigo.wav",FA_READ);
+			fopen (aux,"ingrese codigo.wav",FA_READ);
 			break;
 		case NO_WAV:
 			return;

@@ -15,7 +15,7 @@ typedef unsigned char FATFS;
 
 int f_lseek (FIL *wav,unsigned int ofs);
 
-void f_open (FIL *fp,char *path,unsigned int flag)
+void fopen (FIL *fp,char *path,unsigned int flag)
 {return;}
 
 int f_read (FIL *wav,uint32_t *buff,int btr,int *br);
