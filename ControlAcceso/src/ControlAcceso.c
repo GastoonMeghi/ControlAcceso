@@ -101,7 +101,7 @@ int main(void) {
 
     while (1)
     {
-    	if (get_codigo_personal (&i)==READY)
+    	//if (get_codigo_personal (&i)==READY)
     	reproducir_wav (WAV_BIENVENIDO);
 
     }

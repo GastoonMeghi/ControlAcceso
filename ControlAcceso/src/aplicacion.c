@@ -27,12 +27,12 @@ void Inicializar ( void )
 	inic_systick ();
 	Inic_RTC ();
 	inic_datos ();
+	inic_timer1();
 	// la inicializacion del wav, del dac y del timer debe estar en ese orden!
 	inic_dac ();
 	inic_wav();
 	inic_timer0 ();
 	/////******
-	inic_timer1();
 }
 
 void aplicacion (void)
