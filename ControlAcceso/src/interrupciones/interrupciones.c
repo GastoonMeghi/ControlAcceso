@@ -1,5 +1,6 @@
 #include "aplicacion.h"
 
+extern volatile int demoraLCD;
 
 void TIMER0_IRQHandler (void)
 {
@@ -39,6 +40,9 @@ void SysTick_Handler (void)
 		x = 0;
 	}
 	x++;
+	if ( demoraLCD ){
+		demoraLCD--;
+	}
 }
 
 void UART1_IRQHandler (void)
