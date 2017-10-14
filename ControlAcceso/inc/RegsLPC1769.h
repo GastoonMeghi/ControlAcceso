@@ -15,7 +15,7 @@
 
 	#define		__R		volatile const
 	#define		__W		volatile
-	#define		__RW		volatile
+	#define		__RW	volatile
 
 
 
@@ -321,7 +321,7 @@
 		#define		CIS		2
 	//!< /////////////		FIN TIMER0		///////////////////////////
 
-	//!< /////////////		TIMER0		///////////////////////////
+	//!< /////////////		TIMER1		///////////////////////////
 	#define		TIMER1			( ( __RW uint32_t  * ) 0x40008000UL )
 
 	#define		T1IR			TIMER1[ 0 ]			/** IR - INTERRUPT REGISTER */

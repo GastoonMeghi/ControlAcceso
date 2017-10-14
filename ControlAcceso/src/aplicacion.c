@@ -1,5 +1,5 @@
 
-#include "Aplicacion.h"
+#include "aplicacion.h"
 
 extern __RW uint32_t buffer_rfid;
 
@@ -28,11 +28,14 @@ void Inicializar ( void )
 	Inic_RTC ();
 	inic_datos ();
 	inic_timer1();
+
 	// la inicializacion del wav, del dac y del timer debe estar en ese orden!
 	inic_dac ();
 	inic_wav();
 	inic_timer0 ();
 	/////******
+
+	Inic_UART1();
 }
 
 void aplicacion (void)
@@ -156,4 +159,17 @@ void inic_datos (void)
 	datos_pc.codigo_personal=0;
 	colaborador.codigo_personal=0;
 	colaborador.codigo_tarjeta=0;
+}
+
+
+void ejemplo_uart1 () {
+	static uint8_t aux[13];
+	if (get_RFID(aux)) {
+		if (!(strcmp((char *)aux, "540022C7AE1F"))) {
+			set_pin(RGBR, 0);
+		}
+		else if (!(strcmp((char *)aux, "540021EABB24"))) {
+			set_pin(RGBR, 1);
+		}
+	}
 }

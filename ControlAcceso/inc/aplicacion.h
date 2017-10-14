@@ -11,6 +11,7 @@
 //----------------------------------------------
 
 //----------------------------------------------
+	#include "string.h"
 	#include "expansion3.h"
 	#include "GPIO.h"
 	#include "KitInfo2_BaseBoard.h"
@@ -25,7 +26,8 @@
 	#include "dac.h"
 	#include "wav.h"
 	#include "fatfs.h"
-void Inicializar ( void );
+	#include <UART1/UART1.h>
+	void Inicializar ( void );
 void InicPLL     ( void );
 
 
@@ -117,6 +119,7 @@ void estado_normal (void);
 
 void estado_seteo (void);
 
+void ejemplo_uart1 ();	// Funcion a modo de ejemplo
 
 void aplicacion (void);
 #endif /* APLICACION_H_ */

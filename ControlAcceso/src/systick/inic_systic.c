@@ -9,7 +9,7 @@
 //-----------------------------------------------------------------------------
 void inic_systick(void)
 {
-	STRELOAD = (uint16_t) (STCALIB/6) -1;
+	STRELOAD = (uint16_t) (STCALIB/1) -1;
 	STCURR=0;
 	CLKSOURCE = 1;
 	ENABLE =1;

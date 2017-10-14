@@ -6,7 +6,7 @@
  \date 2012.04.25
  */
 
-#include "Aplicacion.h"
+#include "aplicacion.h"
 
  volatile uint8_t msgDisplay[6];		//!< Buffer de display
 

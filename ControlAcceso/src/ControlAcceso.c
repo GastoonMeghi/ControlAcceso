@@ -98,11 +98,11 @@ int main(void) {
 	    aux = SD[41];
 
 	reproducir_wav (WAV_BIENVENIDO);
-
     while (1)
     {
     	//if (get_codigo_personal (&i)==READY)
     	reproducir_wav (WAV_BIENVENIDO);
+    	ejemplo_uart1();
 
     }
 
