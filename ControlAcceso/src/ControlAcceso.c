@@ -113,7 +113,7 @@ int main(void) {
    // 	reproducir_wav (WAV_BIENVENIDO);
     	//if (get_codigo_personal (&i)==READY)
     	//reproducir_wav (WAV_BIENVENIDO);
-    	//ejemplo_uart1();
+    	ejemplo_uart1();
 
     }
 

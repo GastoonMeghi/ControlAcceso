@@ -31,7 +31,7 @@
 	#include "ff.h"
 	#include "fatfs.h"
 	#include "LPC176x.h"
-#include "LCD.h"
+	#include "LCD/LCD.h"
 
 
 

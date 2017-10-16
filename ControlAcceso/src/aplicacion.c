@@ -165,12 +165,16 @@ void inic_datos (void)
 
 void ejemplo_uart1 () {
 	static uint8_t aux[13];
+	//Display_lcd("INGRESE TARJETA",0,0);
+	//Display_lcd("               ",1,0);
 	if (get_RFID(aux)) {
+		//WComando8(LCD_CLEAR);
 		if (!(strcmp((char *)aux, "540022C7AE1F"))) {
 			set_pin(RGBR, 0);
 		}
 		else if (!(strcmp((char *)aux, "540021EABB24"))) {
 			set_pin(RGBR, 1);
 		}
+		//Display_lcd((char *) aux,1,1);
 	}
 }

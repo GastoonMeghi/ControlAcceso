@@ -7,6 +7,7 @@
 #define LEIDA				1
 #define SIN_LEER			0
 #define TARJETA_INGRESADA	2
+#define TARJETA_CORRECTA	3
 
 void	Inic_UART1	();
 uint8_t	PushRx 		(uint8_t dato);
