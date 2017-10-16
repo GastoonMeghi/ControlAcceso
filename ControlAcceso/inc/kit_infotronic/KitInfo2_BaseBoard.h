@@ -46,6 +46,11 @@
 	#define		LED3		PORT0,21		//GPIO0
 	#define		LED4		PORT0,27		//GPIO0
 
+	#define		RELE1		LED1 			//GPIO2
+	#define		RELE2		LED2			//GPIO0
+	#define		RELE3		LED3			//GPIO0
+	#define		RELE4		LED4			//GPIO0
+
 	//Led RGB:
 	#define		RGBB		PORT2,1			//GPIO2
 	#define		RGBR		PORT2,2			//GPIO2

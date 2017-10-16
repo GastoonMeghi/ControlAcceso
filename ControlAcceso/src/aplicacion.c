@@ -21,8 +21,8 @@ __RW uint8_t codigo_personal_listo;
 
 void Inicializar ( void )
 {
-	inic_GPIO ();
 	InicPLL ();
+	inic_GPIO ();
 	InitGPIOs_Exp3 ();
 	inic_systick ();
 	Inic_RTC ();
