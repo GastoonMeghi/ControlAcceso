@@ -10,6 +10,7 @@
 
 
 #include "aplicacion.h"
+#include "ff.h"
 //codigos de wavs
 #define WAV_BIENVENIDO 1
 #define WAV_HASTA_LUEGO 2
@@ -19,9 +20,6 @@
 #define NO_WAV 0
 
 
-
-
-typedef unsigned char FIL;
 
 
 /**

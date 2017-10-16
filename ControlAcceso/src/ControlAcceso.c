@@ -78,31 +78,42 @@ __RW uint16_t timer_codigo_personal = -1;
  */
 
 
-
-extern char SD[];
+//extern char SD[];
 
 int main(void) {
 
-	unsigned char aux;
-	uint32_t i;
+//	uint32_t i;
 	Inicializar ( );
-	colaborador.codigo_tarjeta=0;
+//	colaborador.codigo_tarjeta=0;
+//
+//prueba ();
+//
+//
 
-    //prueba ();
 
-		aux = SD[36];
-	    aux = SD[37];
-	    aux = SD[38];
-	    aux = SD[39];
-	    aux = SD[40];
-	    aux = SD[41];
+	FRESULT fr;
+	FATFS aux;
+	UINT br;
+	FIL fil;
+	char buff1[100];
 
-	reproducir_wav (WAV_BIENVENIDO);
+
+	        /* Get work area for the volume */
+	fr= f_mount(&aux, "", 0);                    /* Mount the default drive */
+////	    /* Open a text file */
+   fr = f_open(&fil, "bienvenido.wav", FA_READ);
+	//fr= f_read(&fil,buff1,100,&br);
+
+
+
     while (1)
     {
-    	//if (get_codigo_personal (&i)==READY)
     	reproducir_wav (WAV_BIENVENIDO);
-    	ejemplo_uart1();
+
+   // 	reproducir_wav (WAV_BIENVENIDO);
+    	//if (get_codigo_personal (&i)==READY)
+    	//reproducir_wav (WAV_BIENVENIDO);
+    	//ejemplo_uart1();
 
     }
 

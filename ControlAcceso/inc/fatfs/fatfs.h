@@ -1,27 +1,20 @@
 /*
  * fatfs.h
  *
- *  Created on: 17 de set. de 2017
- *      Author: Gaston
+ *  Created on: Oct 14, 2017
+ *      Author: Administrator
  */
 
-#ifndef FATFS_FATFS_H_
-#define FATFS_FATFS_H_
+#ifndef FATFS_H_
+#define FATFS_H_
+#include "ff.h"
 
-#include "aplicacion.h"
-#include "GPIO.h"
-typedef  unsigned char FIL;
-typedef unsigned char FATFS;
-#define FA_READ 0
+FRESULT f_open (FIL* fp, const TCHAR* path, BYTE mode);				/* Open or create a file */
+FRESULT f_close (FIL* fp);											/* Close an open file object */
+FRESULT f_read (FIL* fp, void* buff, UINT btr, UINT* br);			/* Read data from the file */
+FRESULT f_lseek (FIL* fp, FSIZE_t ofs);								/* Move file pointer of the file object */
+FRESULT f_mount (FATFS* fs, const TCHAR* path, BYTE opt);			/* Mount/Unmount a logical drive */
+TCHAR* f_gets (TCHAR* buff, int len, FIL* fp);						/* Get a string from the file */
 
-int f_lseek (FIL *wav,unsigned int ofs);
 
-void f_open (FIL *fp,char *path,unsigned int flag);
-
-int f_read (FIL *wav,uint32_t *buff,int btr,int *br);
-
-void f_mount (FATFS *fp, char *path, unsigned int modo);
-
-void f_close (FIL *fp);
-
-#endif /* FATFS_FATFS_H_ */
+#endif /* FATFS_H_ */

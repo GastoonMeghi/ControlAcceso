@@ -25,9 +25,18 @@
 	#include "prueba.h"
 	#include "dac.h"
 	#include "wav.h"
-	#include "fatfs.h"
 	#include <UART1/UART1.h>
-	#include "LCD/LCD.h"
+	#include <string.h>
+	#include "diskio.h"
+	#include "ff.h"
+	#include "fatfs.h"
+	#include "LPC176x.h"
+#include "LCD.h"
+
+
+
+
+
 	void Inicializar ( void );
 void InicPLL     ( void );
 
