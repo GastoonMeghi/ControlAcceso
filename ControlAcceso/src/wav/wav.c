@@ -5,6 +5,7 @@
  *      Author: Gaston
  */
 #include "aplicacion.h"
+#include "ff.h"
 #include "definiciones_wav.h"
 __RW uint32_t cola_de_reproduccion[CANT_WAVS+5]; //le sumo 5 para no desbordar la cola
 
@@ -15,9 +16,10 @@ extern char SD[];
 
 void inic_wav (void)
 {
-	static FATFS *fs;
+	static FATFS fs;
+	FRESULT fr;
 
-	f_mount(fs, "", 0);
+	//fr=f_mount(&fs, "", 0);
 	bzero (cola_de_reproduccion,CANT_WAVS+5); //al inicializarlo en cero indico que la cola esta vacia
 }
 
@@ -105,42 +107,42 @@ void WAV_TO_DAC (void)
 {
 	__RW uint32_t i;
 	static __RW uint8_t estado=INIC;
-	static FIL *aux=SD; //CAMBIA ESTO FORROOOO!!!
-
+	static FIL aux;
+	FRESULT fr;
 
 	if (estado==INIC) //abro el wav correspondiente
 	{
 		switch (cola_de_reproduccion[0])
 		{
 		case WAV_BIENVENIDO:
-			fopen (aux,"bienvienido.wav",FA_READ);
+			fr=f_open (&aux,"bienvenido.wav",FA_READ);
 			break;
 		case WAV_HASTA_LUEGO:
-			fopen (aux,"hasta luego.wav",FA_READ);
+			f_open (&aux,"hasta luego.wav",FA_READ);
 			break;
 		case WAV_CLAVE_INCORRECTA:
-			fopen (aux,"clave incorrecta.wav",FA_READ);
+			f_open (&aux,"codigo incorrecto.wav",FA_READ);
 			break;
 		case WAV_CLAVE_CORRECTA:
-			fopen (aux,"clave correcta.wav",FA_READ);
+			f_open (&aux,"codigo correcto.wav",FA_READ);
 			break;
 		case WAV_INGRESE_CODIGO:
-			fopen (aux,"ingrese codigo.wav",FA_READ);
+			f_open (&aux,"ingrese codigo.wav",FA_READ);
 			break;
 		case NO_WAV:
 			return;
 		//agregar un "else" para codigos no contemplados
 		}
-		f_lseek (aux,44); //lo posiciono para la lectura del archivo
+		f_lseek (&aux,44); //lo posiciono para la lectura del archivo
 		estado=REPRODUCCION;
 	}
 
 	if (estado==REPRODUCCION)
 	{
 
-		if (leer_buff_reproduccion (aux)) //si termino el archivo
+		if (leer_buff_reproduccion (&aux)) //si termino el archivo
 		{
-			f_close (aux);
+			f_close (&aux);
 			estado = POP_COLA; //termine el archivo por lo tanto lo saco de la cola
 		}
 

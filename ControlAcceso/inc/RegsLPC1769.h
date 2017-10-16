@@ -393,13 +393,11 @@
 
 	//!< /////////////		RTC		///////////////////////////
 
-#define		RTC 			(( __RW uint32_t  * ) 0x40024000UL )
+//#define		RTC 			(( __RW uint32_t  * ) 0x40024000UL )
 #define		RTCILR			RTC[0]
 #define		RTCCCR			RTC[2]
 #define		RTCCIIR			RTC[3]
 #define		RTCAMR			RTC[4]
-#define		RTC_AUX			RTC[23]
-#define		RTC_AUXEN		RTC[22]
 #define		RTCCTIME0		RTC[5]
 #define		RTCCTIME1		RTC[6]
 #define		RTCCTIME2		RTC[7]

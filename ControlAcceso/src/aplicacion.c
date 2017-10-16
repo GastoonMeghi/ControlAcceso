@@ -25,7 +25,7 @@ void Inicializar ( void )
 	InicPLL ();
 	InitGPIOs_Exp3 ();
 	inic_systick ();
-	Inic_RTC ();
+	rtc_initialize ();
 	inic_datos ();
 	inic_timer1();
 
@@ -36,7 +36,7 @@ void Inicializar ( void )
 	/////******
 
 	Inic_UART1();
-	Inic_LCD();
+//	Inic_LCD();
 }
 
 void aplicacion (void)
@@ -165,20 +165,12 @@ void inic_datos (void)
 
 void ejemplo_uart1 () {
 	static uint8_t aux[13];
-	Display_lcd("Ingrese tarjeta ",0,0);
-	Display_lcd("                ",1,0);
 	if (get_RFID(aux)) {
 		if (!(strcmp((char *)aux, "540022C7AE1F"))) {
 			set_pin(RGBR, 0);
-			WComando8(LCD_CLEAR);
-			Display_lcd("Tarjeta leida:",0,0);
-			Display_lcd((char *)aux,1,1);
 		}
 		else if (!(strcmp((char *)aux, "540021EABB24"))) {
 			set_pin(RGBR, 1);
-			WComando8(LCD_CLEAR);
-			Display_lcd("Tarjeta leida:",0,0);
-			Display_lcd((char *)aux,1,1);
 		}
 	}
 }
