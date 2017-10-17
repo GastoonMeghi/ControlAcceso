@@ -18,8 +18,8 @@ uint8_t tarjeta = LEIDA;
 
 uint8_t PushRx( uint8_t dato )
 {
-	/*if(rx_buffer_full)
-		return 1;	//buffer lleno*/
+	if(rx_buffer_full)
+		return 1;	//buffer lleno
 	// nueva version
 	if (rx_buffer_state == RXBUFFER_SIZE)
 		return 1; // buffer lleno
@@ -27,12 +27,12 @@ uint8_t PushRx( uint8_t dato )
 	bufferRx[rx_in] = dato;
 	rx_in ++;
 	rx_in %= RXBUFFER_SIZE;
-	//rx_buffer_empty = 0;	//si agrego un dato el buffer ya no esta vacio
+	rx_buffer_empty = 0;	//si agrego un dato el buffer ya no esta vacio
 	//
 	rx_buffer_state++;
 	//
 
-	/*if(rx_in == rx_out)
+	if(rx_in == rx_out)
 		rx_buffer_full = 1;	//se lleno el buffer*/
 
 	return 0;	//dato agregado al buffer
@@ -40,8 +40,8 @@ uint8_t PushRx( uint8_t dato )
 
 uint8_t PopRx( uint8_t *dato )
 {
-	/*if(rx_buffer_empty)
-		return 1;	//buffer vacio*/
+	if(rx_buffer_empty)
+		return 1;	//buffer vacio
 	// Nueva version
 	if (!rx_buffer_state)
 		return 1;	// Buffer vacio
@@ -49,12 +49,12 @@ uint8_t PopRx( uint8_t *dato )
 	*dato = (uint8_t) bufferRx[rx_out];
 	rx_out++;
 	rx_out %= RXBUFFER_SIZE;
-	//rx_buffer_full = 0;	//si saco un dato el buffer ya no esta lleno
+	rx_buffer_full = 0;	//si saco un dato el buffer ya no esta lleno
 	//
 	rx_buffer_state--;
 	//
-	/*if(rx_out == rx_in)
-		rx_buffer_empty = 1;	//se vacio el buffer*/
+	if(rx_out == rx_in)
+		rx_buffer_empty = 1;	//se vacio el buffer
 
 	return 0;	//dato sacado del buffer
 }
@@ -64,19 +64,21 @@ void update_RFID() {
 	// Fin:		valor int = 3, valor ascii = '\003'
 	static uint8_t i = 0;
 	uint8_t dato;
-	if( !(PopRx(&dato)) && (rx_buffer_state > 20) ) {
-		if (dato == TARJETA_INGRESADA) {
-			while (!PopRx(&dato) && i < 12) {
-				bufferRFID[i] = dato;
-				i++;
+	if( rx_buffer_state > 20 ) {
+		if ( !(PopRx(&dato)) ) {
+			if (dato == TARJETA_INGRESADA) {
+				while (!PopRx(&dato) && i < 12) {
+					bufferRFID[i] = dato;
+					i++;
+				}
+				bufferRFID[i] = '\0';
 			}
-			bufferRFID[i] = '\0';
+			if(dato == TARJETA_CORRECTA)
+				tarjeta = SIN_LEER;
+			else
+				tarjeta = LEIDA;
+			i = 0;
 		}
-		if(dato == TARJETA_CORRECTA)
-			tarjeta = SIN_LEER;
-		else
-			tarjeta = LEIDA;
-		i = 0;
 	}
 }
 

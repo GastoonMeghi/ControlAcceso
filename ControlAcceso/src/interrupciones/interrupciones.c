@@ -33,13 +33,7 @@ void SysTick_Handler (void)
 	barrido_display ();
 	teclado_sw(teclado_hw());
 	capturar_y_mostrar_codigo ();
-
-	static uint8_t x = 0;
-	if (x==100) {
-		update_RFID();
-		x = 0;
-	}
-	x++;
+	update_RFID();
 }
 
 void UART1_IRQHandler (void)
