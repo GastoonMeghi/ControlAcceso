@@ -95,14 +95,14 @@ int main(void) {
 	FATFS aux;
 	UINT br;
 	FIL fil;
-	char buff1[100];
 
 
-	        /* Get work area for the volume */
-	fr= f_mount(&aux, "", 0);                    /* Mount the default drive */
-////	    /* Open a text file */
-   fr = f_open(&fil, "bienvenido.wav", FA_READ);
-	//fr= f_read(&fil,buff1,100,&br);
+
+//	        /* Get work area for the volume */
+//	fr= f_mount(&aux, "", 0);                    /* Mount the default drive */
+//////	    /* Open a text file */
+//   fr = f_open(&fil, "bienvenido.wav", FA_READ);
+//	//fr= f_read(&fil,buff1,100,&br);
 
 
 
