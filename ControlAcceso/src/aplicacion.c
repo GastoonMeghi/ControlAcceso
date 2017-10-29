@@ -1,22 +1,13 @@
 
 #include "aplicacion.h"
 
-extern __RW uint32_t buffer_rfid;
 
-extern __RW uint16_t timer_codigo_personal;
 
 extern __RW datos_pc_t datos_pc;
 
 extern __RW colaborador_t colaborador;
 
-extern __RW uint8_t flag_ingreso_codigo;
 
-extern __RW uint8_t buff_key;
-
-
-
-
-__RW uint8_t codigo_personal_listo;
 
 
 void Inicializar ( void )
@@ -66,17 +57,13 @@ void aplicacion (void)
 void estado_normal (void)
 {
 	__RW static uint8_t estado = DETECCION;
+	__RW static uint32_t codigo_personal = 0;
 
 	if (estado==DETECCION && HAY_TARJETA)
 	{
 		reproducir_wav(WAV_BIENVENIDO);
 	    reproducir_wav(WAV_INGRESE_CODIGO);
 		//PEDIR_CODIGO_PERSONAL_PC; //flag para pedir los datos de la pc
-
-		flag_ingreso_codigo=1;	//habilito a que se pueda ingresar el codigo
-		ACTIVAR_TEMPORIZADOR_DE_INGRESO; //activa un timer que fija el tiempo maximo para ingresar y aceptar el codigo
-		colaborador.codigo_personal =0;
-		codigo_personal_listo =0;
 
 		estado= VALIDACION_CODIGO;
 		//IGNORAR_LECTOR; //evita que se remplace el valor de tarjeta leido
@@ -86,9 +73,9 @@ void estado_normal (void)
 
 	if (estado==VALIDACION_CODIGO)
 	{
-		if (codigo_personal_listo) //fue ingresado por el usuario
+		if (get_codigo_personal (&codigo_personal)==READY) //fue ingresado por el usuario
 		{
-			flag_ingreso_codigo=0;
+
 
 			if (CODIGO_PC_RECIBIDO)
 			{
@@ -110,7 +97,7 @@ void estado_normal (void)
 					flag_ingreso_codigo=1;
 				}
 
-				codigo_personal_listo =0;
+
 			}
 		}
 
