@@ -19,7 +19,7 @@ void inic_wav (void)
 	static FATFS fs;
 	FRESULT fr;
 
-	fr=f_mount(&fs, "", 0); //lo descomento para montar el disco
+	fr=f_mount(&fs, "", 1); //lo descomento para montar el disco
 	bzero (cola_de_reproduccion,CANT_WAVS+5); //al inicializarlo en cero indico que la cola esta vacia
 }
 

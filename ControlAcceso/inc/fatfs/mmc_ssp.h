@@ -261,6 +261,8 @@ int select (void)	/* 1:OK, 0:Timeout */
 static
 void power_on (void)	/* Enable SSP module and attach it to I/O pads */
 {
+	static int seguidora=0;
+
 	__set_PCONP(PCSSPx, 1);	/* Enable SSP module */
 	__set_PCLKSEL(PCLKSSPx, PCLKDIV_SSP);	/* Select PCLK frequency for SSP */
 	SSPxCPSR = 2;			/* CPSDVSR=2 */
@@ -269,7 +271,14 @@ void power_on (void)	/* Enable SSP module and attach it to I/O pads */
 	ATTACH_SSP();			/* Attach SSP module to I/O pads */
 	CS_HIGH();				/* Set CS# high */
 
-	for (Timer1 = 10; Timer1; ) ;	/* 10ms */
+	Timer1 = 10;
+	while(Timer1!=0 && seguidora==0){
+	/* 10ms */
+}
+	if(Timer1==0)
+	{
+		seguidora=1;
+	}
 }
 
 

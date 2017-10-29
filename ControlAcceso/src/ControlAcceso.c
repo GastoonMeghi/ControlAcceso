@@ -91,20 +91,7 @@ int main(void) {
 //
 
 
-	FRESULT fr;
-	FATFS aux;
-	UINT br;
-	FIL fil;
-
-
-
-//	        /* Get work area for the volume */
-//	fr= f_mount(&aux, "", 0);                    /* Mount the default drive */
-//////	    /* Open a text file */
-//   fr = f_open(&fil, "bienvenido.wav", FA_READ);
-//	//fr= f_read(&fil,buff1,100,&br);
-
-
+	//LA SD SE MONTA DESDE void inic_wav (void)
 
     while (1)
     {
@@ -113,7 +100,7 @@ int main(void) {
    // 	reproducir_wav (WAV_BIENVENIDO);
     	//if (get_codigo_personal (&i)==READY)
     	//reproducir_wav (WAV_BIENVENIDO);
-    	ejemplo_uart1();
+   // 	ejemplo_uart1();
 
     }
 
