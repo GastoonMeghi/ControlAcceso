@@ -24,6 +24,7 @@
  *
  *\details devuelve el estado del codigo BUSY(ingresando codigo), READY (codigo ingresado),TIEMPO_VENCIDO (vencio el tiempo de ingreso de codigo)
  *\details cuando su estado es READY, guarda el codigo personal leido en codigo_personal
+ *\details se deben ingresar tantos digitos como MAX_DIGITOS y apretar la tecla ENTER al finalizar para que la funcion devuelva READY
 
 */
 uint8_t get_codigo_personal (uint32_t *codigo_personal);

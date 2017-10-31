@@ -49,12 +49,8 @@ void InicPLL     ( void );
 */
 
 #define CODIGO_PC_RECIBIDO datos_pc.codigo_personal!=0
-#define CODIGO_CORRECTO datos_pc.codigo_personal == colaborador.codigo_personal
-#define HAY_TARJETA colaborador.codigo_tarjeta!=0
-#define DESACTIVAR_TEMPORIZADOR_DE_INGRESO timer_codigo_personal = -1;
-#define TIEMPO_DE_INGRESO_CODIGO_PERSONAL  27000
-#define ACTIVAR_TEMPORIZADOR_DE_INGRESO timer_codigo_personal = TIEMPO_DE_INGRESO_CODIGO_PERSONAL
-#define TEMPORIZADOR_DE_INGRESO_VENCIDO timer_codigo_personal ==0
+#define CODIGO_CORRECTO (Tecla()==0) //es solo para simular despues cambiar por lo correspondiente
+#define CODIGO_INCORRECTO (Tecla()==1)//es solo para simular despues cambiar por lo correspondiente
 
 #define NORMAL 0
 #define DETECCION 1

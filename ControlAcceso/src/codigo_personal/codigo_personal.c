@@ -49,8 +49,9 @@ void capturar_y_mostrar_codigo (void)
 	}
 	tecla =Tecla();
 
-	if (tecla==ENTER)
+	if (tecla==ENTER && digito==MAX_DIGITOS)
 	{
+
 		resultado=READY;
 		habilitar =0;
 	    display (0);

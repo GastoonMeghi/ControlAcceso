@@ -3,10 +3,6 @@
 
 
 
-extern __RW datos_pc_t datos_pc;
-
-extern __RW colaborador_t colaborador;
-
 
 
 
@@ -17,7 +13,6 @@ void Inicializar ( void )
 	InitGPIOs_Exp3 ();
 	inic_systick ();
 	rtc_initialize ();
-	inic_datos ();
 	inic_timer1();
 
 	// la inicializacion del wav, del dac y del timer debe estar en ese orden!
@@ -37,6 +32,7 @@ void aplicacion (void)
 	while (1)
 	{
 
+		//CONDICION_CAMBIO_DE ESTADOS
 
 		if (estado==NORMAL)
 		{
@@ -58,56 +54,53 @@ void estado_normal (void)
 {
 	__RW static uint8_t estado = DETECCION;
 	__RW static uint32_t codigo_personal = 0;
-
-	if (estado==DETECCION && HAY_TARJETA)
+	__RW static uint8_t codigo_tarjeta [13];
+	__RW uint8_t resultado_codigo_personal =BUSY;
+	if (estado==DETECCION)
 	{
+		if (get_RFID(codigo_tarjeta)) //si se encontro una tarjeta
+		{
 		reproducir_wav(WAV_BIENVENIDO);
 	    reproducir_wav(WAV_INGRESE_CODIGO);
-		//PEDIR_CODIGO_PERSONAL_PC; //flag para pedir los datos de la pc
-
 		estado= VALIDACION_CODIGO;
-		//IGNORAR_LECTOR; //evita que se remplace el valor de tarjeta leido
+		}
 	}
 
 
 
 	if (estado==VALIDACION_CODIGO)
 	{
-		if (get_codigo_personal (&codigo_personal)==READY) //fue ingresado por el usuario
+		resultado_codigo_personal= get_codigo_personal (&codigo_personal);
+		if (resultado_codigo_personal==READY) //fue ingresado por el usuario
 		{
+			//ENVIAR_DATOS_PC;
 
 
-			if (CODIGO_PC_RECIBIDO)
-			{
-				if (CODIGO_CORRECTO)
+				if (CODIGO_CORRECTO) //para simular pregunto si se apreto la tecla 0 en la exp 3
 				{
-					//SEÑAL_BIENVENIDA_DESPEDIDA;
-					//ENVIAR_DATOS_PC;
-					//RESETEAR_DATOS; //resetea DETECCION_TARJETA,CODIGO_INGRESADO,CODIGO_CORRECTO
-					flag_ingreso_codigo=0; //el codigo ya fue ingresado
-					DESACTIVAR_TEMPORIZADOR_DE_INGRESO;
+					reproducir_wav (WAV_CLAVE_CORRECTA);
+					reproducir_wav (WAV_HASTA_LUEGO);
+					bzero(codigo_tarjeta,13);
+					codigo_personal=0;
 					estado =DETECCION;
-					//ESCUCHAR_LECTOR //vuelve a habilitar el lector de rfid
+
 				}
-				else
+				else if (CODIGO_INCORRECTO)
 				{
-					//SEÑAL_CLAVE_INCORRECTA;
-					colaborador.codigo_personal=0; //borro el codigo anterior
-					ACTIVAR_TEMPORIZADOR_DE_INGRESO;
-					flag_ingreso_codigo=1;
+					reproducir_wav (WAV_CLAVE_INCORRECTA);
+					bzero(codigo_tarjeta,13);
+					codigo_personal=0;
+					estado =DETECCION;
 				}
 
 
-			}
-		}
 
-		if (TEMPORIZADOR_DE_INGRESO_VENCIDO)
+		}
+		else if (resultado_codigo_personal== TIEMPO_VENCIDO)
 		{
-			//RESETEAR_DATOS;
-			colaborador.codigo_tarjeta=0;
-			colaborador.codigo_personal=0;
-			DESACTIVAR_TEMPORIZADOR_DE_INGRESO;
-			estado=DETECCION;
+			bzero(codigo_tarjeta,13);
+			codigo_personal=0;
+			estado =DETECCION;
 		}
 
 
@@ -117,37 +110,45 @@ void estado_normal (void)
 void estado_seteo (void)
 {
 	__RW static uint8_t estado =DETECCION;
+	__RW static uint32_t codigo_personal = 0;
+	__RW static uint8_t codigo_tarjeta [13];
+	__RW uint8_t resultado_codigo_personal =BUSY;
 
-	if (estado==DETECCION &&HAY_TARJETA)
+
+	if (estado==DETECCION )
 	{
-		//IGNORAR_LECTOR
-		//SEÑAL_INGRESO_CODIGO; //señal que indica al colaborador que debe ingresar el codigo
-		//PEDIR_CODIGO_PERSONAL_PC; //flag para pedir los datos de la pc
+		if (get_RFID (codigo_tarjeta))
+		{
+			reproducir_wav(WAV_BIENVENIDO);
+			reproducir_wav(WAV_INGRESE_CODIGO);
+			estado= INGRESO_CODIGO;
 
-		flag_ingreso_codigo=1;	//habilito a que se pueda ingresar el codigo
-		ACTIVAR_TEMPORIZADOR_DE_INGRESO; //activa un timer que fija el tiempo maximo para ingresar y aceptar el codigo
-		colaborador.codigo_personal =0;
-		codigo_personal_listo =0;
-		estado=INGRESO_CODIGO;
+		}
 	}
-	if (estado==INGRESO_CODIGO && codigo_personal_listo)
+	if (estado==INGRESO_CODIGO )
 	{
-		datos_pc.codigo_tarjeta=colaborador.codigo_tarjeta;
-		datos_pc.codigo_personal=colaborador.codigo_personal;
-		//ENVIAR_DATOS_PC
-		estado= DETECCION;
+		resultado_codigo_personal= get_codigo_personal (&codigo_personal);
+
+		if (resultado_codigo_personal==READY) //fue ingresado por el usuario
+		{
+			//ENVIAR_DATOS_SETEO_A_PC;
+			reproducir_wav (WAV_HASTA_LUEGO);
+			bzero(codigo_tarjeta,13);
+			codigo_personal=0;
+			estado =DETECCION;
+		}
+		else if (resultado_codigo_personal== TIEMPO_VENCIDO)
+		{
+			bzero(codigo_tarjeta,13);
+			codigo_personal=0;
+			estado =DETECCION;
+		}
 
 	}
 
 }
 
 
-void inic_datos (void)
-{
-	datos_pc.codigo_personal=0;
-	colaborador.codigo_personal=0;
-	colaborador.codigo_tarjeta=0;
-}
 
 
 void ejemplo_uart1 () {
