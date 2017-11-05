@@ -21,8 +21,8 @@ void Inicializar ( void )
 	inic_timer0 ();
 	/////******
 
+	Inic_LCD();
 	Inic_UART1();
-//	Inic_LCD();
 }
 
 void aplicacion (void)
@@ -43,6 +43,7 @@ void aplicacion (void)
 		{
 			estado_seteo ();
 		}
+    	//ejemplo_uart1 ();
 	}
 
 }
@@ -58,6 +59,7 @@ void estado_normal (void)
 	__RW uint8_t resultado_codigo_personal =BUSY;
 	if (estado==DETECCION)
 	{
+		Display_lcd("INGRESE TARJETA ",0,0);
 		if (get_RFID(codigo_tarjeta)) //si se encontro una tarjeta
 		{
 		reproducir_wav(WAV_BIENVENIDO);
@@ -70,6 +72,7 @@ void estado_normal (void)
 
 	if (estado==VALIDACION_CODIGO)
 	{
+		Display_lcd(" INGRESE CODIGO ",0,0);
 		resultado_codigo_personal= get_codigo_personal (&codigo_personal);
 		if (resultado_codigo_personal==READY) //fue ingresado por el usuario
 		{
@@ -153,8 +156,7 @@ void estado_seteo (void)
 
 void ejemplo_uart1 () {
 	static uint8_t aux[13];
-	//Display_lcd("INGRESE TARJETA",0,0);
-	//Display_lcd("               ",1,0);
+	Display_lcd("INGRESE TARJETA",0,0);
 	if (get_RFID(aux)) {
 		//WComando8(LCD_CLEAR);
 		if (!(strcmp((char *)aux, "540022C7AE1F"))) {
@@ -163,6 +165,6 @@ void ejemplo_uart1 () {
 		else if (!(strcmp((char *)aux, "540021EABB24"))) {
 			set_pin(RGBR, 1);
 		}
-		//Display_lcd((char *) aux,1,1);
+		Display_lcd((char *) aux,1,1);
 	}
 }

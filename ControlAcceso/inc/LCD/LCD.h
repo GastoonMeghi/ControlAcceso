@@ -33,7 +33,7 @@
 
 #include "KitInfo2_BaseBoard.h"
 
-
+void update_Display();
 void Inic_LCD(void);			// Inicialización del LCD
 void WComando8(uint8_t);
 void WDato(uint8_t);

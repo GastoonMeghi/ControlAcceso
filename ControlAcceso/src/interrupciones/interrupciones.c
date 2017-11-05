@@ -34,19 +34,15 @@ void SysTick_Handler (void)
 	teclado_sw(teclado_hw());
 	capturar_y_mostrar_codigo ();
 	update_RFID();
+	update_Display();
 }
 
 void UART1_IRQHandler (void)
 {
 	uint8_t iir;
-	do
+	iir = U1IIR;			//IIR es reset por HW, una vez que lo lei se resetea.
+	if ( iir & 0x04 )		//Data ready
 	{
-		iir = U1IIR;			//IIR es reset por HW, una vez que lo lei se resetea.
-		if ( iir & 0x04 )		//Data ready
-		{
-			PushRx((uint8_t )U1RBR );
-		}
-
+		PushRx((uint8_t )U1RBR );
 	}
-	while( ! ( iir & 0x01 ) ); // me fijo si habia otra	int: b0=1 (ocurre unicamente si suceden dos int a la vez)
 }

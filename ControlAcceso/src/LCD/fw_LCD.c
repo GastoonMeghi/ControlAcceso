@@ -12,9 +12,16 @@
  */
 #include "aplicacion.h"
 
-volatile int demoraLCD;
+volatile int demoraLCD = 0;
 uint8_t bufferLCD[100];
 uint8_t entero_ascii[6];
+
+void update_Display() {
+
+	if ( demoraLCD ){
+		demoraLCD--;
+	}
+}
 
 /**
  * void LCDWaitLong(uint8_t ciclos)
@@ -56,7 +63,6 @@ void LCDWaitShort(uint8_t ciclos)
  * */
 
 void LCDDelay(uint16_t demora){
-
 	demoraLCD = demora;
 	while(demoraLCD);
 
@@ -73,7 +79,7 @@ void LatchLcd(void){
 
 	set_pin(LCD_E,ON);
 	//LCDDelay(2);
-	LCDWaitLong(15);
+	//LCDWaitLong(15);
 	for(i = 0; i < 120; i++);
 	set_pin(LCD_E,OFF);
 }
