@@ -14,7 +14,7 @@
 
 
 
-#define ACTIVAR_TIMER_INGRESO_CODIGO T1TCR &= ~(0x01<<0);T1TCR|= (0x01<<1);	T1TCR &= ~(0x01<<1);T1TCR |= (0x01<<0); //activa el timer1
+#define ACTIVAR_TIMER_INGRESO_CODIGO inic_timer1(); //activa el timer1
 #define ENTER 7 //codigo entregado por la funcion Tecla cuando se presiona la tecla ENTER
 #define MAX_DIGITOS 4
 

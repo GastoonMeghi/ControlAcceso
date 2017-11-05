@@ -25,7 +25,6 @@ void inic_timer0 (void)
 
 void inic_timer1 (void)
 {
-
 	PCONP|= (0x01<<2);
 	PCLKSEL0 |= ~(0x03<<4); //lo ajusto en CCLK/8
 	T1PR = 12499999; //cada pulso de clock son 1seg
@@ -35,7 +34,12 @@ void inic_timer1 (void)
 	T1TCR &= ~(0x01<<0);
 	T1TCR|= (0x01<<1);
 	ISER0 |= (0x01<<2);
-	//NO LO ACTIVO, SE ACTIVA DESDE void capturar_y_mostrar_codigo (void)
+
+
+		T1TCR &= ~(0x01<<0);
+		T1TCR|= (0x01<<1);
+		T1TCR &= ~(0x01<<1);
+		T1TCR |= (0x01<<0);
 
 }
 
