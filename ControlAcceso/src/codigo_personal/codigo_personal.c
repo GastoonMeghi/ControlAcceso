@@ -11,6 +11,8 @@ __RW uint32_t codigo=0;
 
 __RW uint8_t resultado=BUSY;
 
+__RW uint8_t resultado_leido=1;//flag que evita que capturar y mostrar codigo sobre escriba un resultado que todavia no fue informado a la aplicacion
+
 __RW uint8_t habilitar=0;
 
 __RW uint8_t timer_ingreso_codigo;
@@ -20,6 +22,13 @@ void capturar_y_mostrar_codigo (void)
 	static __RW uint8_t inic=1;
 	static __RW uint8_t digito;
 	__RW uint8_t tecla;
+
+	if (resultado_leido) //evito sobrescribir un resultado que no fue leido todavia, la variable se pone en uno, en get_codigo_personal, que es donde se informa el resultado
+	{
+		resultado_leido =0;
+	}
+	else return;
+
 
 	if (!habilitar) //si no se activo la captura de cogido desde get_codigo_personal
 	{
@@ -94,9 +103,11 @@ uint8_t get_codigo_personal (uint32_t *codigo_personal)
 			*codigo_personal=codigo; //devuelvo el codigo capturado
 			estado = PRIMER_PEDIDO;  // me pongo a la espera de un nuevo pedido
 			resultado =BUSY;
+			resultado_leido=1; //informo a capturar y mostrar codigo, que lei el resultado y puede actualizarlo
 			return READY;
 		}
 	}
+	resultado_leido=1; //informo a capturar y mostrar codigo, que lei el resultado y puede actualizarlo
 	return resultado;
 }
 
