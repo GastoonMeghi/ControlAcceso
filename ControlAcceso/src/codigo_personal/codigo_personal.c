@@ -87,6 +87,8 @@ void capturar_y_mostrar_codigo (void)
 uint8_t get_codigo_personal (uint32_t *codigo_personal)
 {
 	static __RW uint8_t estado=PRIMER_PEDIDO;
+	__RW uint8_t resultado_auxiliar; //esta variable evita que al poner resultado_leido=1, el sistick interrumpa justoo despues y cambie su valor (me voy de mambo en paranoico)
+
 
 
 	if (estado==PRIMER_PEDIDO)
@@ -107,8 +109,9 @@ uint8_t get_codigo_personal (uint32_t *codigo_personal)
 			return READY;
 		}
 	}
+	resultado_auxliar = resultado;
 	resultado_leido=1; //informo a capturar y mostrar codigo, que lei el resultado y puede actualizarlo
-	return resultado;
+	return resultado_auxiliar;
 }
 
 
