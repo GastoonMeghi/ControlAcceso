@@ -109,7 +109,7 @@ uint8_t get_codigo_personal (uint32_t *codigo_personal)
 			return READY;
 		}
 	}
-	resultado_auxliar = resultado;
+	resultado_auxiliar = resultado;
 	resultado_leido=1; //informo a capturar y mostrar codigo, que lei el resultado y puede actualizarlo
 	return resultado_auxiliar;
 }

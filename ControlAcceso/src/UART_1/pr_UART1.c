@@ -70,9 +70,12 @@ uint8_t PopRx( uint8_t *dato )
  * 		obtener el codigo de la tarjeta (que lo activa y desactiva a traves de un flag).
  */
 
+uint8_t uart_timeout = 0;
+
 void update_RFID() {
 	// Inicio:	valor int = 2, valor ascii = '\002'
 	// Fin:		valor int = 3, valor ascii = '\003'
+	if (uart_timeout) uart_timeout--;
 	static uint8_t i = 0;
 	uint8_t dato;
 	if( rx_buffer_state > 20 ) {
@@ -84,8 +87,10 @@ void update_RFID() {
 				}
 				bufferRFID[i] = '\0';
 			}
-			if(dato == TARJETA_CORRECTA)
+			if(dato == TARJETA_CORRECTA) {
 				tarjeta = SIN_LEER;
+				memset(bufferRx, '\0', RXBUFFER_SIZE);
+			}
 			else
 				tarjeta = LEIDA;
 			i = 0;
@@ -116,7 +121,7 @@ void update_RFID() {
  *
  */
 
-int get_RFID(uint8_t *dato) {
+uint8_t get_RFID(uint8_t *dato) {
 	if (tarjeta == LEIDA) {
 		return 0;
 	}

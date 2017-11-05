@@ -37,12 +37,15 @@ void SysTick_Handler (void)
 	update_Display();
 }
 
+extern uint8_t uart_timeout;
+
 void UART1_IRQHandler (void)
 {
 	uint8_t iir;
 	iir = U1IIR;			//IIR es reset por HW, una vez que lo lei se resetea.
-	if ( iir & 0x04 )		//Data ready
+	if ( iir & 0x04 /*&& !uart_timeout*/)		//Data ready
 	{
 		PushRx((uint8_t )U1RBR );
+		uart_timeout = 1000;
 	}
 }
