@@ -45,5 +45,5 @@ uint32_t my_pow (uint8_t base, uint8_t exp);
  *\brief debe ubicarse en la interrupcion del timer1, informa a las funciones de codigo_personal.c que el timer vencio
 */
 
-void timer_codigo_vencido (void);
+void decrementar_timer_codigo (void);
 #endif /* CODIGO_PERSONAL_CODIGO_PERSONAL_H_ */

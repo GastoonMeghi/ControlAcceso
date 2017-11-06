@@ -13,7 +13,7 @@ __RW uint8_t resultado=BUSY;
 
 __RW uint8_t habilitar=0;
 
-__RW uint8_t timer_ingreso_codigo;
+__RW uint16_t timer_ingreso_codigo;
 
 void capturar_y_mostrar_codigo (void)
 {
@@ -32,8 +32,7 @@ void capturar_y_mostrar_codigo (void)
 		codigo =0;
 		digito =0;
 		resultado=BUSY;
-		ACTIVAR_TIMER_INGRESO_CODIGO;
-		timer_ingreso_codigo=1;
+		timer_ingreso_codigo=20000;
 		inic=0;
 	}
 
@@ -112,7 +111,7 @@ uint32_t my_pow (uint8_t base, uint8_t exp)
 
 }
 
-void timer_codigo_vencido (void)
+void decrementar_timer_codigo (void)
 {
-	timer_ingreso_codigo=0;
+	if (timer_ingreso_codigo) timer_ingreso_codigo--;
 }
