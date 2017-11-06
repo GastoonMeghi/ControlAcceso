@@ -95,6 +95,12 @@ uint8_t get_codigo_personal (uint32_t *codigo_personal)
 			resultado =BUSY;
 			return READY;
 		}
+		if (resultado==TIEMPO_VENCIDO)
+		{
+			estado=PRIMER_PEDIDO;
+			resultado = BUSY;
+			return TIEMPO_VENCIDO;
+		}
 	}
 	return resultado;
 }
