@@ -13,7 +13,7 @@ void Inicializar ( void )
 	InitGPIOs_Exp3 ();
 	inic_systick ();
 	rtc_initialize ();
-	inic_timer1();
+
 
 	// la inicializacion del wav, del dac y del timer debe estar en ese orden!
 	inic_dac ();

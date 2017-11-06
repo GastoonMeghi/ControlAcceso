@@ -21,11 +21,11 @@ void TIMER0_IRQHandler (void)
 }
 
 
-void TIMER1_IRQHandler (void)
-{
-	timer_codigo_vencido ();
-	T1IR|=(0x01);
-}
+//void TIMER1_IRQHandler (void)
+//{
+//	timer_codigo_vencido ();
+//	T1IR|=(0x01);
+//}
 
 void SysTick_Handler (void)
 {
@@ -35,6 +35,7 @@ void SysTick_Handler (void)
 	capturar_y_mostrar_codigo ();
 	update_RFID();
 	update_Display();
+	decrementar_timer_codigo ();
 }
 
 void UART1_IRQHandler (void)
