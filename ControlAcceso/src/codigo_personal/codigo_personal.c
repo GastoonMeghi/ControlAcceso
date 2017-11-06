@@ -36,7 +36,7 @@ void capturar_y_mostrar_codigo (void)
 		inic=0;
 	}
 
-	if (!timer_ingreso_codigo) //vencio el tiempo estipulado
+	if (timer_ingreso_codigo <= 0) //vencio el tiempo estipulado
 	{
 		codigo =0;
 		digito =0;
