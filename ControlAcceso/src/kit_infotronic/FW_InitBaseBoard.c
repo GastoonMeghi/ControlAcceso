@@ -41,4 +41,18 @@ void inic_GPIO (void)
 	set_pinsel(LED_VERDE, PINSEL_GPIO);
 	set_dir(LED_VERDE, SALIDA);
 	set_pin(LED_VERDE, 1);
+	// Inicializar teclado
+	set_pinsel( KEY0 , PINSEL_GPIO);
+	set_pinsel( KEY1 , PINSEL_GPIO);
+	set_pinsel( KEY2 , PINSEL_GPIO);
+	set_pinsel( KEY3_RC , PINSEL_GPIO);
+	set_pinsel( KEY4_RC , PINSEL_GPIO);
+	set_dir( KEY0 , ENTRADA);
+	set_dir( KEY1 , ENTRADA);
+	set_dir( KEY2 , ENTRADA);
+	set_dir( KEY3_RC , ENTRADA);
+	set_dir( KEY4_RC , ENTRADA);
+	set_pinmode( KEY0 , PINMODE_PULLUP);
+	set_pinmode( KEY1 , PINMODE_PULLUP);
+	set_pinmode( KEY2 , PINMODE_PULLUP);
 }

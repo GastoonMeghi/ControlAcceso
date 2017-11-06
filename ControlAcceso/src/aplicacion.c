@@ -99,7 +99,7 @@ void estado_normal (void)
 
 
 		}
-		else if (resultado_codigo_personal== TIEMPO_VENCIDO)
+		else if (get_pin(KEY0, ACTIVO_BAJO)/*resultado_codigo_personal== TIEMPO_VENCIDO*/)
 		{
 			bzero(codigo_tarjeta,13);
 			codigo_personal=0;
