@@ -27,6 +27,7 @@ int main(void) {
 
     while (1)
     {
+    	//ejemplo_uart1 ();
     	aplicacion ();
     }
 
