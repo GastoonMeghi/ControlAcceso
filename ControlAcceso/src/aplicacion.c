@@ -60,6 +60,8 @@ void estado_normal (void)
 	if (estado==DETECCION)
 	{
 		Display_lcd("INGRESE TARJETA ",0,0);
+		Display_lcd("FECHA: ",1,0);
+		DisplayInt_lcd(12, 1, 8);
 		if (get_RFID(codigo_tarjeta)) //si se encontro una tarjeta
 		{
 		reproducir_wav(WAV_BIENVENIDO);
@@ -72,7 +74,10 @@ void estado_normal (void)
 
 	if (estado==VALIDACION_CODIGO)
 	{
-		Display_lcd(" INGRESE CODIGO ",0,0);
+		Display_lcd("ID: ",0,0);
+		Display_lcd((char *)codigo_tarjeta,0,4);
+		Display_lcd(" TIEMPO: ",1,0);
+		DisplayInt_lcd(123, 1, 9);
 		resultado_codigo_personal= get_codigo_personal (&codigo_personal);
 		if (resultado_codigo_personal==READY) //fue ingresado por el usuario
 		{
