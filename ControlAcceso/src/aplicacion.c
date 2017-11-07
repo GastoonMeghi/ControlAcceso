@@ -43,7 +43,6 @@ void aplicacion (void)
 		{
 			estado_seteo ();
 		}
-    	//ejemplo_uart1 ();
 	}
 
 }
@@ -57,14 +56,20 @@ void estado_normal (void)
 	__RW static uint32_t codigo_personal = 0;
 	__RW static uint8_t codigo_tarjeta [13];
 	__RW uint8_t resultado_codigo_personal =BUSY;
+	static uint8_t flag_LCD = 1;
+
 	if (estado==DETECCION)
 	{
-		Display_lcd("INGRESE TARJETA ",0,0);
+		if (flag_LCD) {
+			Display_lcd("INGRESE TARJETA ",0,0);
+			flag_LCD = 0;
+		}
 		if (get_RFID(codigo_tarjeta)) //si se encontro una tarjeta
 		{
-		reproducir_wav(WAV_BIENVENIDO);
-	    reproducir_wav(WAV_INGRESE_CODIGO);
-		estado= VALIDACION_CODIGO;
+			reproducir_wav(WAV_BIENVENIDO);
+	    	reproducir_wav(WAV_INGRESE_CODIGO);
+			estado= VALIDACION_CODIGO;
+			flag_LCD = 1;
 		}
 	}
 
@@ -72,7 +77,10 @@ void estado_normal (void)
 
 	if (estado==VALIDACION_CODIGO)
 	{
-		Display_lcd(" INGRESE CODIGO ",0,0);
+		if (flag_LCD) {
+			Display_lcd(" INGRESE CODIGO ",0,0);
+			flag_LCD = 0;
+		}
 		resultado_codigo_personal= get_codigo_personal (&codigo_personal);
 		if (resultado_codigo_personal==READY) //fue ingresado por el usuario
 		{
@@ -86,6 +94,7 @@ void estado_normal (void)
 					bzero(codigo_tarjeta,13);
 					codigo_personal=0;
 					estado =DETECCION;
+					flag_LCD = 1;
 
 				}
 				else if (CODIGO_INCORRECTO)
@@ -94,6 +103,7 @@ void estado_normal (void)
 					bzero(codigo_tarjeta,13);
 					codigo_personal=0;
 					estado =DETECCION;
+					flag_LCD = 1;
 				}
 
 
@@ -104,6 +114,7 @@ void estado_normal (void)
 			bzero(codigo_tarjeta,13);
 			codigo_personal=0;
 			estado =DETECCION;
+			flag_LCD = 1;
 		}
 
 
