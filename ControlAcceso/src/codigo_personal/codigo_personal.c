@@ -15,13 +15,17 @@ __RW uint8_t resultado_leido=1;//flag que evita que capturar y mostrar codigo so
 
 __RW uint8_t habilitar=0;
 
-__RW uint8_t timer_ingreso_codigo;
+__RW uint8_t resultado_leido=1;//flag que evita que capturar y mostrar codigo sobre escriba un resultado que todavia no fue informado a la aplicacion
+
+
+__RW uint16_t timer_ingreso_codigo;
 
 void capturar_y_mostrar_codigo (void)
 {
 	static __RW uint8_t inic=1;
 	static __RW uint8_t digito;
 	__RW uint8_t tecla;
+
 
 	if (resultado_leido) //evito sobrescribir un resultado que no fue leido todavia, la variable se pone en uno, en get_codigo_personal, que es donde se informa el resultado
 	{
@@ -41,12 +45,11 @@ void capturar_y_mostrar_codigo (void)
 		codigo =0;
 		digito =0;
 		resultado=BUSY;
-		ACTIVAR_TIMER_INGRESO_CODIGO;
-		timer_ingreso_codigo=1;
+		timer_ingreso_codigo=20000;
 		inic=0;
 	}
 
-	if (!timer_ingreso_codigo) //vencio el tiempo estipulado
+	if (timer_ingreso_codigo <= 0) //vencio el tiempo estipulado
 	{
 		codigo =0;
 		digito =0;
@@ -87,6 +90,7 @@ void capturar_y_mostrar_codigo (void)
 uint8_t get_codigo_personal (uint32_t *codigo_personal)
 {
 	static __RW uint8_t estado=PRIMER_PEDIDO;
+
 	__RW uint8_t resultado_auxiliar; //esta variable evita que al poner resultado_leido=1, el sistick interrumpa justoo despues y cambie su valor (me voy de mambo en paranoico)
 
 
@@ -106,11 +110,20 @@ uint8_t get_codigo_personal (uint32_t *codigo_personal)
 			estado = PRIMER_PEDIDO;  // me pongo a la espera de un nuevo pedido
 			resultado =BUSY;
 			resultado_leido=1; //informo a capturar y mostrar codigo, que lei el resultado y puede actualizarlo
+
 			return READY;
+		}
+		if (resultado==TIEMPO_VENCIDO)
+		{
+			estado=PRIMER_PEDIDO;
+			resultado = BUSY;
+			resultado_leido=1;
+			return TIEMPO_VENCIDO;
 		}
 	}
 	resultado_auxiliar = resultado;
 	resultado_leido=1; //informo a capturar y mostrar codigo, que lei el resultado y puede actualizarlo
+
 	return resultado_auxiliar;
 }
 
@@ -126,7 +139,7 @@ uint32_t my_pow (uint8_t base, uint8_t exp)
 
 }
 
-void timer_codigo_vencido (void)
+void decrementar_timer_codigo (void)
 {
-	timer_ingreso_codigo=0;
+	if (timer_ingreso_codigo) timer_ingreso_codigo--;
 }
