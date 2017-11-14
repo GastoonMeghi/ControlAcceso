@@ -16,7 +16,7 @@ __RW uint8_t resultado_leido=1;//flag que evita que capturar y mostrar codigo so
 __RW uint8_t habilitar=0;
 
 
-__RW uint16_t timer_ingreso_codigo;
+__RW uint32_t timer_ingreso_codigo;
 
 void capturar_y_mostrar_codigo (void)
 {
@@ -43,7 +43,7 @@ void capturar_y_mostrar_codigo (void)
 		codigo =0;
 		digito =0;
 		resultado=BUSY;
-		timer_ingreso_codigo=20000;
+		timer_ingreso_codigo=200000;
 		inic=0;
 	}
 

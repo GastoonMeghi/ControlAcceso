@@ -15,21 +15,21 @@ uint8_t teclado_hw (void)
 		EX3_columna1_ON;
 
 		if (!EX3_fila0)
-		return 0;
+		return 4;
 		else if (!EX3_fila1)
 		return 1;
 		else if (!EX3_fila2)
-		return 2;
-		else if (!EX3_fila3)
 		return 3;
+		else if (!EX3_fila3)
+		return 2;
 
 		EX3_columna0_ON;
 		EX3_columna1_OFF;
 
 		if (!EX3_fila0)
-		return 4;
-		else if (!EX3_fila1)
 		return 5;
+		else if (!EX3_fila1)
+		return 8;
 		else if (!EX3_fila2)
 		return 6;
 		else if (!EX3_fila3)
