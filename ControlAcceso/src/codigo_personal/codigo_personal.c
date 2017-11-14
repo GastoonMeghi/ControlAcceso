@@ -15,8 +15,6 @@ __RW uint8_t resultado_leido=1;//flag que evita que capturar y mostrar codigo so
 
 __RW uint8_t habilitar=0;
 
-__RW uint8_t resultado_leido=1;//flag que evita que capturar y mostrar codigo sobre escriba un resultado que todavia no fue informado a la aplicacion
-
 
 __RW uint16_t timer_ingreso_codigo;
 
@@ -110,7 +108,6 @@ uint8_t get_codigo_personal (uint32_t *codigo_personal)
 			estado = PRIMER_PEDIDO;  // me pongo a la espera de un nuevo pedido
 			resultado =BUSY;
 			resultado_leido=1; //informo a capturar y mostrar codigo, que lei el resultado y puede actualizarlo
-
 			return READY;
 		}
 		if (resultado==TIEMPO_VENCIDO)

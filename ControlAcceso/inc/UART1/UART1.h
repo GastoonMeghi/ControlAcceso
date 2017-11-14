@@ -8,6 +8,8 @@
 #define SIN_LEER			0
 #define TARJETA_INGRESADA	2
 #define TARJETA_CORRECTA	3
+#define DESHABILITAR_RFID	set_pinsel(PORT0,16,PINSEL_FUNC2);
+#define HABILITAR_RFID		set_pinsel(PORT0,16,PINSEL_FUNC1);
 
 void	Inic_UART1	();
 uint8_t	PushRx 		(uint8_t dato);

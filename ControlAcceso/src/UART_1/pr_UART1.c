@@ -10,6 +10,8 @@ uint8_t rx_in,rx_out;
 uint8_t rx_buffer_full = 0, rx_buffer_empty = 1;
 //
 uint8_t rx_buffer_state = 0;
+uint8_t rx_buffer_timeout = 0;
+uint8_t rx_flag = 1;
 //
 
 // Buffer tarjeta
@@ -73,6 +75,11 @@ uint8_t PopRx( uint8_t *dato )
 void update_RFID() {
 	// Inicio:	valor int = 2, valor ascii = '\002'
 	// Fin:		valor int = 3, valor ascii = '\003'
+	if (rx_buffer_timeout) rx_buffer_timeout--;
+	else if (rx_flag && !rx_buffer_timeout) {
+		HABILITAR_RFID;
+		rx_flag = 0;
+	}
 	static uint8_t i = 0;
 	uint8_t dato;
 	if( rx_buffer_state > 20 ) {
@@ -86,7 +93,11 @@ void update_RFID() {
 			}
 			if(dato == TARJETA_CORRECTA) {
 				tarjeta = SIN_LEER;
-				//memset(bufferRx, '\0', RXBUFFER_SIZE);
+				rx_buffer_state = 0;
+				rx_out = rx_in;
+				DESHABILITAR_RFID;
+				rx_buffer_timeout = 300000;
+				rx_flag = 1;
 			}
 			else
 				tarjeta = LEIDA;

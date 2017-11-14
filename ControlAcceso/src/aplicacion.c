@@ -78,7 +78,8 @@ void estado_normal (void)
 	if (estado==VALIDACION_CODIGO)
 	{
 		if (flag_LCD) {
-			Display_lcd(" INGRESE CODIGO ",0,0);
+			Display_lcd("ID: ",0,0);
+			Display_lcd((char *)codigo_tarjeta,0,4);
 			flag_LCD = 0;
 		}
 		resultado_codigo_personal= get_codigo_personal (&codigo_personal);
