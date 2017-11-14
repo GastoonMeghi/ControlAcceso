@@ -68,7 +68,7 @@ void capturar_y_mostrar_codigo (void)
 		inic=1;
 		return;
 	}
-	if (tecla<0 ||tecla>9) //tecla invalida
+	if (tecla<0 ||tecla>9||tecla==ENTER) //tecla invalida
 	{
 		resultado=BUSY;
 		return;

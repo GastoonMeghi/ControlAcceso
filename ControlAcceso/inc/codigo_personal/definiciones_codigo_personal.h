@@ -15,7 +15,7 @@
 
 
 #define ACTIVAR_TIMER_INGRESO_CODIGO inic_timer1(); //activa el timer1
-#define ENTER 7 //codigo entregado por la funcion Tecla cuando se presiona la tecla ENTER
+#define ENTER 8 //codigo entregado por la funcion Tecla cuando se presiona la tecla ENTER
 #define MAX_DIGITOS 4
 
 
