@@ -100,6 +100,7 @@ void estado_normal (void)
 				}
 				else if (CODIGO_INCORRECTO)
 				{
+					Display_lcd("PIN INCORRECTO",1,0);
 					reproducir_wav (WAV_CLAVE_INCORRECTA);
 					bzero(codigo_tarjeta,13);
 					codigo_personal=0;

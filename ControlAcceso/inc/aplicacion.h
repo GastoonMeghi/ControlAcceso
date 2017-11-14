@@ -12,6 +12,7 @@
 
 //----------------------------------------------
 	#include "string.h"
+	#include "math.h"
 	#include "expansion3.h"
 	#include "GPIO.h"
 	#include "KitInfo2_BaseBoard.h"

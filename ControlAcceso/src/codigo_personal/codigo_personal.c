@@ -58,7 +58,6 @@ void capturar_y_mostrar_codigo (void)
 		return;
 	}
 	tecla =Tecla();
-
 	if (tecla==ENTER && digito==MAX_DIGITOS)
 	{
 
@@ -78,7 +77,7 @@ void capturar_y_mostrar_codigo (void)
 		resultado=BUSY;
 		return;
 	}
-	codigo+=tecla*my_pow(10,digito);
+	codigo+=tecla*pow(10,digito);
 	display(codigo);
 	digito++;
 	resultado=BUSY;
