@@ -11,7 +11,17 @@ void inic_timer0 (void)
 	PCONP|= (0x01<<0);
 	PCLKSEL0 &= ~(0x03<<PCLK_TIMER0); //lo ajusto en CCLK/4
 	T0PR = 0;
-	T0MR0 =1111; //ajustado para 44,44useg
+	//T0MR0 =778; //30% menos
+	//T0MR0 =944; //15% menos
+	//T0MR0 =1000; //10% menos
+	//T0MR0 =1055; //5% menos
+	//T0MR0 =1111; //ajustado para 44,44useg
+	//T0MR0 =1166; //5% más
+	//T0MR0 =1222; //10% más
+	//T0MR0 =1277; //15% más
+	//T0MR0 =1444; //30% más
+
+
 	T0CTCR &= ~(0x03<<0); //TIMER
 	T0MCR |= (0x01<<0)|(0x01<<1); //el match 0 del timer 0 interrumpe y resetea el contador
 
