@@ -10,7 +10,7 @@
 
 
 
-#define TAM_BUFF_REPRODUCCION 255 //cantidad de bytes leidos desde la SD
+#define TAM_BUFF_REPRODUCCION 11500 //cantidad de bytes leidos desde la SD
 
 #define CANT_WAVS 5
 //estados de las funciones

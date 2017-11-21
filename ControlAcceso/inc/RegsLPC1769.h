@@ -391,6 +391,15 @@
 	#define		U1LSR		DIR_UART1[5]
 
 
+
+
+	//!< macros útiles para UARTs
+	#define		U0RDR		(U0LSR & LSR_RDR)
+	#define		U0THRE		((U0LSR & LSR_THRE) >>5)
+	#define		U1RDR		(U1LSR & LSR_RDR)
+	#define		U1THRE		((U1LSR & LSR_THRE) >>5)
+
+
 	//!< /////////////		RTC		///////////////////////////
 
 //#define		RTC 			(( __RW uint32_t  * ) 0x40024000UL )

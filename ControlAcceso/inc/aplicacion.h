@@ -33,9 +33,11 @@
 	#include "fatfs.h"
 	#include "LPC176x.h"
 	#include "LCD/LCD.h"
-
-
-
+	#include "FW_Serie.h"
+	#include "AP_Mensajes.h"
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <string.h>
 
 
 	void Inicializar ( void );
@@ -58,8 +60,8 @@ void InicPLL     ( void );
 #define SETEO 2
 #define INGRESO_CODIGO 3
 #define VALIDACION_CODIGO 4
-
-
+#define MODO_NUEVO_EMPLEADO_ON set_pin(RGBB, 1)
+#define MODO_NUEVO_EMPLEADO_OFF set_pin(RGBB, 0)
 
 
 typedef struct

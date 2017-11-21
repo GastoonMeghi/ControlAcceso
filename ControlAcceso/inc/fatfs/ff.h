@@ -245,7 +245,7 @@ typedef enum {
 #define f_rewind(fp) f_lseek((fp), 0)
 #define f_rewinddir(dp) f_readdir((dp), 0)
 #define f_rmdir(path) f_unlink(path)
-#define f_unmount(path) f_mount(0, path, 0)
+#define f_unmount(path) f_mount_SD(0, path, 0)
 
 #ifndef EOF
 #define EOF (-1)

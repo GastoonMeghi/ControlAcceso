@@ -7,7 +7,11 @@
 
 #ifndef GPIO_GPIO_H_
 #define GPIO_GPIO_H_
-
+#define 	P0			0
+#define 	P1			1
+#define 	P2			2
+#define 	P3			3
+#define 	P4			4
 
 	typedef 	unsigned int 	uint32_t;
 	typedef 	unsigned short 	uint16_t;
@@ -27,6 +31,9 @@
     uint8_t get_pin( uint8_t port , uint8_t pin , uint8_t actividad );
 
     void toggle_pin( uint8_t port , uint8_t pin);
+
+
+
 
 	/////////////////INICILIZACION GPIO////////////////////////
 

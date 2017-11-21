@@ -19,7 +19,7 @@ void inic_wav (void)
 	static FATFS fs;
 	FRESULT fr;
 
-	fr=f_mount(&fs, "", 1); //lo descomento para montar el disco
+	fr=f_mount_SD(&fs, "", 1); //lo descomento para montar el disco
 	bzero (cola_de_reproduccion,CANT_WAVS+5); //al inicializarlo en cero indico que la cola esta vacia
 }
 
@@ -53,7 +53,7 @@ int leer_buff_reproduccion (FIL *wav)
 
 	if (estado==READ)
 	{
-		f_read (wav,buff_reproduccion,TAM_BUFF_REPRODUCCION*sizeof (uint16_t),&br);
+		f_read_SD(wav,buff_reproduccion,TAM_BUFF_REPRODUCCION*sizeof (uint16_t),&br);
 		i=0;
 		if (br==TAM_BUFF_REPRODUCCION*sizeof (uint16_t))
 			estado=NORMAL;
@@ -115,25 +115,25 @@ void WAV_TO_DAC (void)
 		switch (cola_de_reproduccion[0])
 		{
 		case WAV_BIENVENIDO:
-			fr=f_open (&aux,"bienvenido.wav",FA_READ);
+			fr=f_open_SD (&aux,"bienvenido.wav",FA_READ);
 			break;
 		case WAV_HASTA_LUEGO:
-			f_open (&aux,"hasta luego.wav",FA_READ);
+			f_open_SD (&aux,"hasta luego.wav",FA_READ);
 			break;
 		case WAV_CLAVE_INCORRECTA:
-			f_open (&aux,"codigo incorrecto.wav",FA_READ);
+			f_open_SD (&aux,"codigo incorrecto.wav",FA_READ);
 			break;
 		case WAV_CLAVE_CORRECTA:
-			f_open (&aux,"codigo correcto.wav",FA_READ);
+			f_open_SD (&aux,"codigo correcto.wav",FA_READ);
 			break;
 		case WAV_INGRESE_CODIGO:
-			f_open (&aux,"ingrese codigo.wav",FA_READ);
+			f_open_SD (&aux,"ingrese codigo.wav",FA_READ);
 			break;
 		case NO_WAV:
 			return;
 		//agregar un "else" para codigos no contemplados
 		}
-		f_lseek (&aux,44); //lo posiciono para la lectura del archivo
+		f_lseek_SD (&aux,44); //lo posiciono para la lectura del archivo
 		estado=REPRODUCCION;
 	}
 
@@ -142,7 +142,7 @@ void WAV_TO_DAC (void)
 
 		if (leer_buff_reproduccion (&aux)) //si termino el archivo
 		{
-			f_close (&aux);
+			f_close_SD (&aux);
 			estado = POP_COLA; //termine el archivo por lo tanto lo saco de la cola
 		}
 

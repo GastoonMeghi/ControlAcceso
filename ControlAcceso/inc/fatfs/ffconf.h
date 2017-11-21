@@ -247,7 +247,7 @@
 #define FF_SYNC_t		HANDLE
 /* The option FF_FS_REENTRANT switches the re-entrancy (thread safe) of the FatFs
 /  module itself. Note that regardless of this option, file access to different
-/  volume is always re-entrant and volume control functions, f_mount(), f_mkfs()
+/  volume is always re-entrant and volume control functions, f_mount_SD(), f_mkfs()
 /  and f_fdisk() function, are always not re-entrant. Only file/directory access
 /  to the same volume is under control of this function.
 /

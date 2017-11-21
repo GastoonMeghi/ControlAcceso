@@ -55,3 +55,4 @@ void set_pinmodeOD ( uint8_t port, uint8_t bit,  uint8_t modo)
 	PINMODE_OD[port] &= ~(0x01<<bit);
 	PINMODE_OD[port] |= (modo<<bit);
 }
+
