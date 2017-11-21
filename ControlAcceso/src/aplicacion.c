@@ -2,8 +2,10 @@
 #include "aplicacion.h"
 #define  TAM_TARJETA sizeof(codigo_tarjeta)
 #define  NUMERO_PIN 6
-
+#define ARMAR_TRAMA_DE_DATOS_INGRESO sprintf(DATOS_TARJETA_PIN,"K%s-%d\r",codigo_tarjeta,codigo_personal)
+#define ARMAR_TRAMA_DE_DATOS_NUEVA_TARJETA sprintf(DATOS_TARJETA_PIN,"T%s-%d\r",codigo_tarjeta,codigo_personal)
 char ESTADO_RX_UART0;
+uint8_t ESTADO_TARJETA_NUEVA_INGRESADA;
 void Inicializar ( void )
 {
 	InicPLL ();
@@ -27,10 +29,10 @@ void Inicializar ( void )
 void aplicacion (void)
 {
 	__RW uint8_t estado=NORMAL;
-
+	ESTADO_TARJETA_NUEVA_INGRESADA=0;
 	while (1)
 	{
-
+		MensajesRX();
 		if(ESTADO_RX_UART0=='Z')//EL USUARIO PIDIO UNA NUEVA TARJETA
 		{
 			ESTADO_RX_UART0='0';
@@ -38,18 +40,25 @@ void aplicacion (void)
 		}
 
 
+		if(ESTADO_TARJETA_NUEVA_INGRESADA==1)//EL USUARIO PIDIO UNA NUEVA TARJETA
+			{
+			ESTADO_TARJETA_NUEVA_INGRESADA=0;
+				estado=NORMAL;
+				MODO_NUEVO_EMPLEADO_OFF;
+			}
+
+
 		//CONDICION_CAMBIO_DE ESTADOS
 
 		if (estado==NORMAL)
 		{
-			 MensajesRX();
+			MensajesRX();
 			estado_normal ();
 		}
 
 		if (estado==SETEO)
 		{
 			estado_seteo ();
-			MensajesRX();
 		}
 
 	}
@@ -66,8 +75,10 @@ void estado_normal (void)
 	__RW static uint8_t codigo_tarjeta [13];
 	__RW uint8_t resultado_codigo_personal =BUSY;
 	char DATOS_TARJETA_PIN[TAM_TARJETA+NUMERO_PIN+3];// TRAMA DE DATOS A ENVIAR EJEMPLO:"T000000000000-000000"
+	static char OLD_TRAMA_DATOS[TAM_TARJETA+NUMERO_PIN+3];
 	static uint8_t flag_LCD = 1;
-
+	static uint8_t enviar=0;
+	MODO_NUEVO_EMPLEADO_OFF;
 
 
 	if (estado==DETECCION)
@@ -102,8 +113,13 @@ void estado_normal (void)
 		{
 			//ENVIAR_DATOS_PC;
 			codigo_personal=123456; // descomentar esto cuando este la tarjeta
-			sprintf(DATOS_TARJETA_PIN,"K%s-%d\r",codigo_tarjeta,codigo_personal);
-			EnviarString_0 (DATOS_TARJETA_PIN);
+
+			ARMAR_TRAMA_DE_DATOS_INGRESO ;//armo la trama de datos con sprintf
+			if(enviar==0 && (strcmp(OLD_TRAMA_DATOS,DATOS_TARJETA_PIN))!=0){
+			EnviarString_0 (DATOS_TARJETA_PIN);// mando la trama por la uart0
+			strcpy(OLD_TRAMA_DATOS,DATOS_TARJETA_PIN);
+			enviar=1;
+			}
 			MensajesRX();
 				if (ESTADO_RX_UART0=='B') //para simular pregunto si se apreto la tecla 0 en la exp 3
 				{
@@ -116,6 +132,7 @@ void estado_normal (void)
 					flag_LCD = 1;
 					ESTADO_RX_UART0='0';
 					resultado_codigo_personal=BUSY;
+					enviar=0;
 					return;
 
 				}
@@ -129,6 +146,7 @@ void estado_normal (void)
 					flag_LCD = 1;
 					ESTADO_RX_UART0='0';
 					resultado_codigo_personal=BUSY;
+					enviar=0;
 					return;
 
 				}
@@ -142,12 +160,9 @@ void estado_normal (void)
 			codigo_personal=0;
 			estado =DETECCION;
 			flag_LCD = 1;
+			enviar=0;
 			return;
 		}
-	 else
-	 {
-		 ESTADO_RX_UART0='0';
-	 }
 
 	}
 }
@@ -184,8 +199,9 @@ if(nueva_tarjeta==0)
 		if (resultado_codigo_personal==READY) //fue ingresado por el usuario
 		{
 			//ENVIAR_DATOS_SETEO_A_PC;
-			sprintf(DATOS_TARJETA_PIN,"T%s-%d\r",codigo_tarjeta,codigo_personal);
+			ARMAR_TRAMA_DE_DATOS_NUEVA_TARJETA;
 			EnviarString_0 (DATOS_TARJETA_PIN);
+
 			ESTADO_RX_UART0='0';
 			MODO_NUEVO_EMPLEADO_OFF;
 
@@ -193,6 +209,7 @@ if(nueva_tarjeta==0)
 			bzero(codigo_tarjeta,13);
 			codigo_personal=0;
 			estado =DETECCION;
+			ESTADO_TARJETA_NUEVA_INGRESADA=1;
 			return;
 		}
 		if (resultado_codigo_personal== TIEMPO_VENCIDO)

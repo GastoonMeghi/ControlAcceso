@@ -15,6 +15,7 @@
 #include <cr_section_macros.h>
 #include "aplicacion.h"
 extern  char ESTADO_RX_UART0;
+extern uint8_t ESTADO_TARJETA_NUEVA_INGRESADA;
 // TODO: insert other include files here
 
 // TODO: insert other definitions and declarations here

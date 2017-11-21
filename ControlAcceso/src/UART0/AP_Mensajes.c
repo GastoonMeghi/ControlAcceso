@@ -16,7 +16,7 @@ extern char ESTADO_RX_UART0;
 #define NUEVA_TARJETA 'Z'
 #define TARJETA_CODIGO_CORRECTO 'B'
 #define TARJETA_CODIGO_INCORRECTO 'M'
-#define TARJETA_GUARDADA'G'
+#define TARJETA_GUARDADA'9'
 
 void MensajesRX(void)
 {
@@ -71,11 +71,11 @@ void MensajesRX(void)
 				espera = 0;
 				break;
 
-		/*	case TARJETA_GUARDADA://M
-					ESTADO_RX_UART0='G';
+			case TARJETA_GUARDADA://9
+					ESTADO_RX_UART0='9';
 					espera = 0;
 					break;
-*/
+
 
 			default:
 			//	ESTADO_RX_UART0='0';
