@@ -16,6 +16,8 @@ volatile int demoraLCD = 0;
 uint8_t bufferLCD[100];
 uint8_t entero_ascii[6];
 
+extern LCD_t my_LCD;
+
 void update_Display() {
 
 	if ( demoraLCD ){
@@ -290,6 +292,9 @@ void WString (uint8_t *ptr)
  * */
 void Inic_LCD(void)
 {
+	my_LCD.r=0;
+	my_LCD.p=0;
+	my_LCD.busy=0;
 	Inic_PinesLCD();		// Configura pines de interfaz con LCD
 	LCDDelay(400);			// Demora inicial
 
