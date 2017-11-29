@@ -8,6 +8,7 @@
 #ifndef LCD_NB_LCD_H_
 #define LCD_NB_LCD_H_
 
+
 typedef struct
 {
 	char msg[16];

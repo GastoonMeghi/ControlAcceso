@@ -33,6 +33,7 @@
 	#include "fatfs.h"
 	#include "LPC176x.h"
 	#include "LCD/LCD.h"
+	#include "nb_LCD.h"
 	#include "FW_Serie.h"
 	#include "AP_Mensajes.h"
 	#include <stdio.h>

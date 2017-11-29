@@ -4,12 +4,13 @@
  *  Created on: 28 de nov. de 2017
  *      Author: Gaston
  */
-
+#include "aplicacion.h"
 
 
 
 LCD_t my_LCD;
 
+extern volatile int demoraLCD = 0;
 uint8_t nb_LCDDelay(uint16_t demora)
 {
 	static uint8_t estado=0;
