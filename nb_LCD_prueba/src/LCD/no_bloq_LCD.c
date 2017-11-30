@@ -24,8 +24,13 @@ uint8_t nb_LCDDelay(uint16_t demora)
 
 void nb_Display_lcd( char *msg , char r , char p )
 {
+	uint8_t aux;
+	for (aux==0;aux<16&& msg[aux-1]!=0;aux++)
+	{
+		my_LCD.msg[aux]=msg[aux];
+	}
 
-	strcpy(my_LCD.msg,msg);
+
 	my_LCD.r=r;
 	my_LCD.p=p;
 	my_LCD.busy=1;
@@ -105,6 +110,7 @@ uint8_t nb_WComando8(uint8_t comando){
 	return 1;
 
 	}
+
 	return 1;
 }
 
