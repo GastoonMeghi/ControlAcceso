@@ -6,6 +6,7 @@
 #define ARMAR_TRAMA_DE_DATOS_NUEVA_TARJETA sprintf(DATOS_TARJETA_PIN,"T%s-%d\r",codigo_tarjeta,codigo_personal)
 char ESTADO_RX_UART0;
 uint8_t ESTADO_TARJETA_NUEVA_INGRESADA;
+uint8_t soft_timer;
 void Inicializar ( void )
 {
 	InicPLL ();
@@ -172,6 +173,8 @@ void estado_seteo (void)
 {
 
 	__RW static uint8_t nueva_tarjeta =0;
+	__RW static uint8_t flag_LCD=1;
+	__RW static uint8_t flag_LCD2=1;
 	__RW static uint8_t estado =DETECCION;
 	__RW static uint32_t codigo_personal = 0;
 	__RW static char codigo_tarjeta [13];
@@ -183,17 +186,27 @@ if(nueva_tarjeta==0)
 
 	if (estado==DETECCION )
 	{
+		if (flag_LCD)
+		{
 		Display_lcd("INGRESE TARJETA ",0,0);
 		Display_lcd("                ",1,0);
+		flag_LCD=0;
+		}
 		if (get_RFID (codigo_tarjeta))
 		{
 			reproducir_wav(WAV_BIENVENIDO);
 			reproducir_wav(WAV_INGRESE_CODIGO);
 			estado= INGRESO_CODIGO;
+			flag_LCD=1;
 		}
 	}
 	if (estado==INGRESO_CODIGO )
 	{
+		if (flag_LCD)
+		{
+		Display_lcd("INGRESE CODIGO     ",0,0);
+		flag_LCD=0;
+		}
 		resultado_codigo_personal= get_codigo_personal (&codigo_personal);
 
 		if (resultado_codigo_personal==READY) //fue ingresado por el usuario
@@ -209,13 +222,30 @@ if(nueva_tarjeta==0)
 			codigo_personal=0;
 			estado =DETECCION;
 			ESTADO_TARJETA_NUEVA_INGRESADA=1;
+			Display_lcd("GRACIAS POR          ",0,0);
+			Display_lcd("REGISTRARSE          ",1,0);
+			flag_LCD=1;
 			return;
 		}
 		if (resultado_codigo_personal== TIEMPO_VENCIDO)
 		{
+
+			if (flag_LCD2)
+			{
+				Display_lcd("TIEMPO VENCIDO     ",0,0);
+				flag_LCD2=0;
+				soft_timer=100;
+			}
+
 			bzero(codigo_tarjeta,13);
 			codigo_personal=0;
+
+			if(!soft_timer)
+			{
 			estado =DETECCION;
+			flag_LCD2=1;
+			flag_LCD=1;
+			}
 			return;
 		}
 
