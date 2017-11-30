@@ -85,6 +85,7 @@ void estado_normal (void)
 	{
 		if (flag_LCD) {
 			Display_lcd("INGRESE TARJETA ",0,0);
+			Display_lcd("                ",1,0);
 			flag_LCD = 0;
 			MODO_NUEVO_EMPLEADO_OFF;
 		}
@@ -108,11 +109,11 @@ void estado_normal (void)
 		}
 		resultado_codigo_personal= get_codigo_personal (&codigo_personal);
 
-		resultado_codigo_personal=READY;// descomentar esto cuando este la expansion 3
+		//resultado_codigo_personal=READY;// comentar esto cuando este la expansion 3
 		if (resultado_codigo_personal==READY) //fue ingresado por el usuario
 		{
 			//ENVIAR_DATOS_PC;
-			codigo_personal=123456; // descomentar esto cuando este la tarjeta
+			//codigo_personal=123456; // comentar esto cuando este la tarjeta
 
 			ARMAR_TRAMA_DE_DATOS_INGRESO ;//armo la trama de datos con sprintf
 			if(enviar==0 && (strcmp(OLD_TRAMA_DATOS,DATOS_TARJETA_PIN))!=0){
@@ -121,9 +122,9 @@ void estado_normal (void)
 			enviar=1;
 			}
 			MensajesRX();
-				if (ESTADO_RX_UART0=='B') //para simular pregunto si se apreto la tecla 0 en la exp 3
+				if (ESTADO_RX_UART0=='B') //USUARIO INGRESADO Y VALIDADO
 				{
-					Display_lcd("CORRECTO",1,0);
+					Display_lcd("CORRECTO        ",0,0);
 					reproducir_wav (WAV_CLAVE_CORRECTA);
 					reproducir_wav (WAV_HASTA_LUEGO);
 					bzero(codigo_tarjeta,13);
@@ -138,8 +139,8 @@ void estado_normal (void)
 				}
 			if (ESTADO_RX_UART0=='M')
 				{
-					Display_lcd("INCORRECTO",1,0);
-					reproducir_wav (WAV_CLAVE_INCORRECTA);
+				Display_lcd("INCORRECTO      ",0,0);
+				reproducir_wav (WAV_CLAVE_INCORRECTA);
 					bzero(codigo_tarjeta,13);
 					codigo_personal=0;
 					estado =DETECCION;
@@ -177,13 +178,13 @@ void estado_seteo (void)
 	__RW uint8_t resultado_codigo_personal =BUSY;
 	char DATOS_TARJETA_PIN[TAM_TARJETA+NUMERO_PIN+3];// TRAMA DE DATOS A ENVIAR EJEMPLO:"T000000000000-000000"
 MODO_NUEVO_EMPLEADO_ON;
-//PARA PROBAR
-codigo_personal=123456;// CODIGO DE PRUEBA PORUQUE NO TENGO LA EXPANSION 3
 if(nueva_tarjeta==0)
 {
 
 	if (estado==DETECCION )
 	{
+		Display_lcd("INGRESE TARJETA ",0,0);
+		Display_lcd("                ",1,0);
 		if (get_RFID (codigo_tarjeta))
 		{
 			reproducir_wav(WAV_BIENVENIDO);
@@ -193,19 +194,17 @@ if(nueva_tarjeta==0)
 	}
 	if (estado==INGRESO_CODIGO )
 	{
-		//resultado_codigo_personal= get_codigo_personal (&codigo_personal);
-		resultado_codigo_personal=READY;
+		resultado_codigo_personal= get_codigo_personal (&codigo_personal);
 
 		if (resultado_codigo_personal==READY) //fue ingresado por el usuario
 		{
-			//ENVIAR_DATOS_SETEO_A_PC;
 			ARMAR_TRAMA_DE_DATOS_NUEVA_TARJETA;
 			EnviarString_0 (DATOS_TARJETA_PIN);
 
 			ESTADO_RX_UART0='0';
 			MODO_NUEVO_EMPLEADO_OFF;
 
-			//reproducir_wav (WAV_HASTA_LUEGO);
+			reproducir_wav (WAV_HASTA_LUEGO);
 			bzero(codigo_tarjeta,13);
 			codigo_personal=0;
 			estado =DETECCION;
