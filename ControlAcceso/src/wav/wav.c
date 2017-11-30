@@ -77,6 +77,7 @@ int leer_buff_reproduccion (FIL *wav)
 	{
 		DACR&= ~(0x3FF<<6); //limpio los 10bits del DAC
 		DACR|= ((0x3FF)& (   (buff_reproduccion[i++])/64)   )<<6; //divido por 64 para convertir de 16 a 10 bits
+		//DACR|= ((0x3FF)& (   (buff_reproduccion[i++]))   )<<6; //adaptado a 8bits
 
 
 

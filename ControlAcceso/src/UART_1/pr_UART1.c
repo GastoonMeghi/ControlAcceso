@@ -10,7 +10,7 @@ uint8_t rx_in,rx_out;
 uint8_t rx_buffer_full = 0, rx_buffer_empty = 1;
 //
 uint8_t rx_buffer_state = 0;
-uint8_t rx_buffer_timeout = 0;
+uint32_t rx_buffer_timeout = 0;
 uint8_t rx_flag = 1;
 //
 
@@ -96,7 +96,7 @@ void update_RFID() {
 				rx_buffer_state = 0;
 				rx_out = rx_in;
 				DESHABILITAR_RFID;
-				rx_buffer_timeout = 300000;
+				rx_buffer_timeout = 10000;
 				rx_flag = 1;
 			}
 			else

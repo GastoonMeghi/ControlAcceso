@@ -16,7 +16,7 @@ extern char ESTADO_RX_UART0;
 #define NUEVA_TARJETA 'Z'
 #define TARJETA_CODIGO_CORRECTO 'B'
 #define TARJETA_CODIGO_INCORRECTO 'M'
-#define TARJETA_GUARDADA'9'
+#define TARJETA_GUARDADA '9'
 
 void MensajesRX(void)
 {
