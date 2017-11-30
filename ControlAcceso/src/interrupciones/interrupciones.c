@@ -26,6 +26,7 @@ void SysTick_Handler (void)
 {
 	disk_timerproc();	/* Disk timer process */
 	barrido_display ();
+	nb_driver_LCD ();
 	teclado_sw(teclado_hw());
 	capturar_y_mostrar_codigo ();
 	update_RFID();

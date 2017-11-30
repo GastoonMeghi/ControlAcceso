@@ -11,34 +11,16 @@
 //----------------------------------------------
 
 //----------------------------------------------
-	#include "string.h"
-	#include "math.h"
-	#include "expansion3.h"
-	#include "GPIO.h"
 	#include "KitInfo2_BaseBoard.h"
-	#include "codigo_personal.h"
 	#include "Oscilador.h"
 	#include "RegsLPC1769.h"
 	#include "interrupciones.h"
-	#include "timers.h"
 	#include "systick.h"
-	#include "RTC.h"
-	#include "prueba.h"
-	#include "dac.h"
-	#include "wav.h"
-	#include <UART1/UART1.h>
-	#include <string.h>
-	#include "diskio.h"
-	#include "ff.h"
-	#include "fatfs.h"
 	#include "LPC176x.h"
 	#include "LCD/LCD.h"
 	#include "nb_LCD.h"
-	#include "FW_Serie.h"
-	#include "AP_Mensajes.h"
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <string.h>
+	#include "GPIO.h"
+	#include "LPC176X.h"
 
 
 	void Inicializar ( void );
