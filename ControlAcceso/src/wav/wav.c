@@ -45,7 +45,7 @@ void bzero (unsigned int *array,unsigned int tam)
 
 int leer_buff_reproduccion (FIL *wav)
 {
-	static __RW uint16_t buff_reproduccion[TAM_BUFF_REPRODUCCION];
+	static __RW uint8_t buff_reproduccion[TAM_BUFF_REPRODUCCION];
 	static __RW uint32_t i; //variable que cuenta la cantidad de muestras de 16bits leidas
 	static __RW uint32_t br; //cantidad de BYTES!!! leidos
 	static __RW uint8_t estado=READ;
@@ -53,21 +53,22 @@ int leer_buff_reproduccion (FIL *wav)
 
 	if (estado==READ)
 	{
-		f_read_SD(wav,buff_reproduccion,TAM_BUFF_REPRODUCCION*sizeof (uint16_t),&br);
+		f_read_SD(wav,buff_reproduccion,TAM_BUFF_REPRODUCCION*sizeof (uint8_t),&br);
 		i=0;
-		if (br==TAM_BUFF_REPRODUCCION*sizeof (uint16_t))
+		if (br==TAM_BUFF_REPRODUCCION*sizeof (uint8_t))
 			estado=NORMAL;
 		else if (br==0)
 			estado=TERMINE;
-		else if (br<TAM_BUFF_REPRODUCCION*sizeof (uint16_t))
+		else if (br<TAM_BUFF_REPRODUCCION*sizeof (uint8_t))
 			estado=ULTIMO; //si leo menos bytes de los que deberia este es el fin del archivo
 	}
 
 	if (estado==NORMAL)
 	{
 		DACR&= ~(0x3FF<<6); //limpio los 10bits del DAC
-		DACR|= ((0x3FF)& (   (buff_reproduccion[i++])/64)   )<<6; //divido por 64 para convertir de 16 a 10 bits
-		if (i*sizeof(uint16_t)==br) //si ya lei todos los bytes del buff_reproduccion
+		DACR|= ((0x3FF)& (   (buff_reproduccion[i++]))   )<<6; //adaptado a 8bits
+
+		if (i*sizeof(uint8_t)==br) //si ya lei todos los bytes del buff_reproduccion
 		{
 			estado=READ;
 		}
@@ -76,11 +77,11 @@ int leer_buff_reproduccion (FIL *wav)
 	if (estado==ULTIMO)
 	{
 		DACR&= ~(0x3FF<<6); //limpio los 10bits del DAC
-		DACR|= ((0x3FF)& (   (buff_reproduccion[i++])/64)   )<<6; //divido por 64 para convertir de 16 a 10 bits
+		DACR|= ((0x3FF)& (   (buff_reproduccion[i++]))   )<<6; //adaptado a 8bits
 
 
 
-		if (i*sizeof(uint16_t)==br)
+		if (i*sizeof(uint8_t)==br)
 		{
 			estado=TERMINE;
 		}

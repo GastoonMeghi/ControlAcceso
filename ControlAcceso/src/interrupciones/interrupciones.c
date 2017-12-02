@@ -1,5 +1,5 @@
 #include "aplicacion.h"
-
+extern uint8_t soft_timer;
 
 void TIMER0_IRQHandler (void)
 {
@@ -32,6 +32,7 @@ void SysTick_Handler (void)
 	update_RFID();
 	update_Display();
 	decrementar_timer_codigo ();
+	if (soft_timer) soft_timer--;
 }
 
 void UART1_IRQHandler (void)

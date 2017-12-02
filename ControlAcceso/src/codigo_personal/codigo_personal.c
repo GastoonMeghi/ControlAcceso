@@ -43,7 +43,7 @@ void capturar_y_mostrar_codigo (void)
 		codigo =0;
 		digito =0;
 		resultado=BUSY;
-		timer_ingreso_codigo=200000;
+		timer_ingreso_codigo=60000;
 		inic=0;
 	}
 
