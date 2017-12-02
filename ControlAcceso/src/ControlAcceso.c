@@ -16,12 +16,10 @@
 #include "aplicacion.h"
 extern  char ESTADO_RX_UART0;
 extern uint8_t ESTADO_TARJETA_NUEVA_INGRESADA;
+
 // TODO: insert other include files here
 
 // TODO: insert other definitions and declarations here
-
-
-
 
 int main(void) {
 
@@ -29,7 +27,6 @@ int main(void) {
 
     while (1)
     {
-    	//ejemplo_uart1 ();
     	aplicacion ();
 
     }
